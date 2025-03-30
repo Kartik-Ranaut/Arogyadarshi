@@ -12,7 +12,7 @@ export default function Header() {
     <p className='heading'>Welcome to Arogyadarshi</p>
 
     <div className="Links  ">
-          <NavLink className="NavLink" to="/home">Home</NavLink>
+          <NavLink className="NavLink" to="/">Home</NavLink>
           
           <NavLink className="NavLink" to="/dashboard">Dashboard</NavLink>
 
