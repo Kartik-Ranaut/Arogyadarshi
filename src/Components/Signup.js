@@ -1,42 +1,86 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './signup.css'
+
+import { useNavigate } from 'react-router-dom';
 export default function Signup() {
+    const [signupdata,setsignupdata]=useState({});
+    const navigate =useNavigate();
+
+    const handleChange=(e)=>{
+      const {name,value}=e.target;
+      setsignupdata((prev)=>({
+        ...prev,
+        [name]:value
+      }))
+      console.log(signupdata)
+    }
+
+    const handleSubmit=async(e)=>{
+
+      e.preventDefault();
+      
+      try{
+  
+      
+      const response= await fetch("http://localhost:3000/api/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(signupdata), // Send converted data
+      })
+      const resdata = await response.json();
+      if(resdata.success==true){
+      alert("Please login now.")
+      navigate("/login");
+      }
+      else{
+        alert(resdata.message)
+      }
+
+    } catch(error){
+          console.error("Error:", error);
+          alert("Error making request. Please try again.");
+        };
+    }
+
+    
   return (
-    <div class="signup-container">
-    <h2>Signup Form</h2>
-    <form className="">
+    <div className="signup-container">
+    <h2>Create Account</h2>
+    <form className="" onSubmit={handleSubmit}>
     <div className='signupForm'>
-    <div class="input-group">
+    <div className="input-group">
         <label for="name">Full Name</label>
-        <input type="text" id="name" required />
+        <input type="text" id="name" name='name' required  onChange={handleChange}/>
       </div>
-      <div class="input-group">
+      <div className="input-group">
         <label for="age">Age</label>
-        <input type="number" id="age" required />
+        <input type="number" id="age" name='age' required  onChange={handleChange}/>
       </div>
-      <div class="input-group">
+      <div className="input-group">
         <label for="email">Email</label>
-        <input type="email" id="email" required />
+        <input type="email" id="email" name='email' required  onChange={handleChange}/>
       </div>
-      <div class="input-group">
+      <div className="input-group">
         <label for="password">Password</label>
-        <input type="password" id="password" required />
+        <input type="password" id="password" name='password' required  onChange={handleChange}/>
       </div>
-      <div class="input-group">
+      <div className="input-group">
         <label for="phone">Phone Number</label>
-        <input type="tel" id="phone" required />
+        <input type="tel" id="phone" name='phone' required  onChange={handleChange}/>
       </div>
-      <div class="input-group">
+      <div className="input-group">
         <label for="disease">Disease (if any)</label>
-        <input type="text" id="disease" />
+        <input type="text" id="disease" name='disease' required onChange={handleChange}/>
       </div>
     </div>
       
-      <div class="input-group">
+      <div className="input-group">
         <label for="address">Address</label>
-        <textarea id="address" rows="2" required></textarea>
+        <textarea id="address" rows="2" required name='address' onChange={handleChange}></textarea>
       </div>
-      <button type="submit" class="submitbtn">Register</button>
+      <button type="submit" className="submitbtn">Register</button>
     <p>Already have an account? <a href='/login'>Login</a></p>
     
     </form>

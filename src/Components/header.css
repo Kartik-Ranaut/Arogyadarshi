@@ -38,3 +38,9 @@
 .active {
   color: rgb(235, 83, 75);
 }
+
+.userbtn{
+  width: fit-content;
+  min-width:100px;
+  
+}

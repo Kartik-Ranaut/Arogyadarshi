@@ -2,7 +2,7 @@ import './header.css'
 import React from 'react'
 import { Link, Links, useNavigate , NavLink} from 'react-router-dom'
 
-export default function Header() {
+export default function Header(props) {
     const navigate=useNavigate();
     const btnCall =()=>{
         navigate('/login');
@@ -26,10 +26,16 @@ export default function Header() {
           Doctor's Section
         </NavLink>
       </div>
-      <button className="loginbtn" onClick={btnCall}>
+      <div className='userbtn'>
+
+     
+      {
+
+      props.islogedin ? <div>{props.user.name}</div>:<button className="loginbtn" onClick={btnCall}>
         Login/Signup
       </button>
-
+      }
+      </div>
     </div>
   );
 }
