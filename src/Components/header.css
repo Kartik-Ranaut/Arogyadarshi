@@ -1,37 +1,36 @@
-.header{
-    background: rgb(15, 17, 23);
-    margin: 0px;
-    padding: 0px;
-    display: flex;
-    justify-content: space-between;
+.header {
+  background: rgb(15, 17, 23);
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  justify-content: space-between;
 }
-.heading{
-    margin: 0px;
-    padding: 10px;
+.heading {
+  margin: 0px;
+  margin-right: 250px;
+  padding: 10px;
 }
-.loginbtn{
-    height: 30px;
-    background-color: rgb(235, 83, 75);
-    border: 0px;
-    color: white;
-    font-weight:900;
-    border-radius: 5px;
-    
+.loginbtn {
+  height: 30px;
+  background-color: rgb(235, 83, 75);
+  border: 0px;
+  color: white;
+  font-weight: 900;
+  border-radius: 5px;
 }
-.Links{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap:90px;
-   
+.Links {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 90px;
 }
-.NavLink{
-    text-decoration-style: none;
-    text-decoration: none;
-    font-weight: 600;
-    font-size: 20px;
-    color: aliceblue;
+.NavLink {
+  text-decoration-style: none;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 20px;
+  color: aliceblue;
 }
-.active{
-    color:rgb(235, 83, 75); ;
+.active {
+  color: rgb(235, 83, 75);
 }
