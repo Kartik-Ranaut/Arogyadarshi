@@ -1,5 +1,8 @@
+/* eslint-disable jsx-a11y/img-redundant-alt */
 import React from "react";
 import "./home.css";
+import HeartImg from "./Heart.jpg";
+import DiabetesImg from "./Diabetes.jpeg"
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
@@ -15,7 +18,11 @@ export default function Home() {
 
       <div className="info-section">
         <div className="info-box">
-          <img src="sample" alt="image aa jayegi bhai" className="info-image" />
+          <img
+            src={HeartImg}
+            alt="Heart disease"
+            className="info-image"
+          />
           <h2>Heart Disease</h2>
           <p>
             Heart disease is a term covering a range of conditions affecting
@@ -24,30 +31,33 @@ export default function Home() {
           </p>
           <ul>
             <li>
-              <strong>Causes:</strong> Kar denge add
+              <strong>Causes:</strong> High cholesterol, high blood pressure,
+              smoking, diabetes, sedentary lifestyle.
             </li>
             <li>
-              <strong>Symptoms:</strong> Kar denge add
+              <strong>Symptoms:</strong> Chest pain, shortness of breath,
+              fatigue, irregular heartbeat.
             </li>
             <li>
-              <strong>Preventive Measures:</strong> Kar denge add
+              <strong>Preventive Measures:</strong> Exercise regularly, eat
+              heart-healthy foods, manage stress, monitor blood pressure.
             </li>
             <li>
-              <strong>Reliefs:</strong> Kar denge add
+              <strong>Reliefs:</strong> Lifestyle changes, medications,
+              surgeries (if detected early).
             </li>
           </ul>
           <button
             className="predict-btn"
             onClick={() =>
               navigate("/dashboard", { state: { selection: "heart" } })
-            }
-          >
+            }>
             Predict Heart Disease
           </button>
         </div>
 
         <div className="info-box">
-          <img src="sample" alt="image aa jayegi bhai" className="info-image" />
+          <img src={DiabetesImg} alt="image aa jayegi bhai" className="info-image" />
           <h2>Diabetes</h2>
           <p>
             Diabetes is a chronic disease that affects how your body turns food
@@ -56,24 +66,27 @@ export default function Home() {
           </p>
           <ul>
             <li>
-              <strong>Causes:</strong> Kar denge add
+              <strong>Causes:</strong> Insulin resistance, genetics, obesity,
+              poor diet.
             </li>
             <li>
-              <strong>Symptoms:</strong> Kar denge add
+              <strong>Symptoms:</strong> Excessive thirst, frequent urination,
+              blurry vision, fatigue.
             </li>
             <li>
-              <strong>Preventive Measures:</strong> Kar denge add
+              <strong>Preventive Measures:</strong> Low sugar diet, regular
+              exercise, avoid junk food.
             </li>
             <li>
-              <strong>Reliefs:</strong> Kar denge add
+              <strong>Reliefs:</strong> Insulin therapy, oral medication,
+              lifestyle modifications.
             </li>
           </ul>
           <button
             className="predict-btn"
             onClick={() =>
               navigate("/dashboard", { state: { selection: "diabetes" } })
-            }
-          >
+            }>
             Predict Diabetes
           </button>
         </div>
@@ -147,8 +160,7 @@ export default function Home() {
       </footer>
       <button
         className="get-started-btn"
-        onClick={() => navigate("/get-started")}
-      >
+        onClick={() => navigate("/get-started")}>
         🚀 Get Started
       </button>
     </div>
