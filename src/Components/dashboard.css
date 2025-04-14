@@ -4,6 +4,7 @@
   height: 100%;
   align-items: stretch; /* Ensures children take full height */
   width: 100vw;
+  padding-top: 50px;
 }
 .selbox {
   padding: 10px;

@@ -4,6 +4,10 @@
   padding: 10px;
   display: flex;
   justify-content: space-between;
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+  box-sizing: border-box;
 }
 .heading {
   margin: 0px;

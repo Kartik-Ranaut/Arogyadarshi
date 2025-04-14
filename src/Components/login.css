@@ -1,0 +1,28 @@
+.signup-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    color: white;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    box-sizing: border-box;
+}
+.loginForm{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+    max-width: 400px;   
+}
+.submitbtn{
+    height: 45px;
+    background-color: rgb(235, 83, 75);
+    border: 0px;
+    color: white;
+    font-weight: 900;
+    width: fit-content;
+    padding: 15px 30px 15px 30px;
+    border-radius: 5px;
+}
