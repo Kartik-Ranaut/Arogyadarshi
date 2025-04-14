@@ -1,0 +1,106 @@
+/* getStarted.css */
+.wizard-container {
+  background-color: #121212;
+  color: white;
+  padding: 30px;
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+
+.wizard-title {
+  font-size: 36px;
+  font-weight: 900;
+  color: rgb(235, 83, 75);
+  margin-bottom: 20px;
+}
+
+.wizard-step {
+  background-color: #1f1f1f;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease-in-out;
+}
+
+.wizard-step:hover {
+  transform: scale(1.05);
+}
+
+.wizard-step h2 {
+  font-size: 28px;
+  color: rgb(235, 83, 75);
+  font-weight: 800;
+}
+
+.wizard-step p {
+  font-size: 16px;
+  color: #ecf0f1;
+  line-height: 1.6;
+}
+
+.wizard-buttons {
+  margin-top: 20px;
+}
+
+.wizard-buttons button {
+  background-color: rgb(235, 83, 75);
+  color: white;
+  font-size: 16px;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+}
+
+.wizard-buttons button:hover {
+  background-color: #c0392b;
+}
+
+.wizard-step button {
+  background-color: rgb(235, 83, 75);
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin: 10px;
+}
+
+.wizard-step button:hover {
+  background-color: #c0392b;
+}
+
+.wizard-step button:focus {
+  outline: none;
+}
+
+.wizard-step .back-btn {
+  background-color: #34495e;
+}
+
+.wizard-step .back-btn:hover {
+  background-color: #2c3e50;
+}
+
+@media (max-width: 768px) {
+  .wizard-container {
+    padding: 20px;
+  }
+
+  .wizard-title {
+    font-size: 28px;
+  }
+
+  .wizard-step h2 {
+    font-size: 24px;
+  }
+
+  .wizard-step p {
+    font-size: 14px;
+  }
+}

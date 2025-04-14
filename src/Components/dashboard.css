@@ -1,58 +1,58 @@
-.dashboard{
-    display: flex;
-    flex-direction: row;
-    height: 100%;
-    align-items: stretch; /* Ensures children take full height */
-    width: 100vw;
+.dashboard {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  align-items: stretch; /* Ensures children take full height */
+  width: 100vw;
 }
-.selbox{
-    padding: 10px;
-    box-sizing: border-box;
-    background-color: rgb(15,17,23);
-    width: 100%;
-    height: fit-content;
-    display: flex;
-    gap: 10px;
-    border-radius: 5px;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+.selbox {
+  padding: 10px;
+  box-sizing: border-box;
+  background-color: rgb(15, 17, 23);
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  gap: 10px;
+  border-radius: 5px;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
-.hr{
-    width: 100%;
-    
-    border-color: #2e2929;
+.hr {
+  width: 100%;
+
+  border-color: #2e2929;
 }
-.selhead{
-    
-    text-align: center;
-    font-weight: 550;
-    font-size: 20px;
+.selhead {
+  text-align: center;
+  font-weight: 550;
+  font-size: 20px;
 }
-.selection{
-    background: rgb(39, 39, 48);
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    width: 25%;
+.selection {
+  background: rgb(39, 39, 48);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 25%;
 }
-.datafield{
-    width: 75%;
+.datafield {
+  width: 75%;
 }
-.button{
-    width: 90%;
-    text-decoration: none;
-    background: rgb(39, 39, 48);
-    border: 0px;
-    color: white;
-    font-weight:1000;
-    font-size: 15px;
-    border-radius: 5px;
-    padding: 12px;
-    margin-bottom: 10px;
-    text-align: center;
-    transition: 0.3s;
+.button {
+  width: 90%;
+  text-decoration: none;
+  background: rgb(39, 39, 48);
+  border: 0px;
+  color: white;
+  font-weight: 1000;
+  font-size: 15px;
+  border-radius: 5px;
+  padding: 12px;
+  margin-bottom: 10px;
+  text-align: center;
+  transition: 0.3s;
+  cursor: pointer;
 }
-.color{
-    background-color: rgb(235, 83, 75);
+.color {
+  background-color: rgb(235, 83, 75);
 }

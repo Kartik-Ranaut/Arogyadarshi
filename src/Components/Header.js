@@ -8,19 +8,28 @@ export default function Header() {
         navigate('/login');
     }
   return (
-    <div className='header'>
-    <p className='heading'>Welcome to Arogyadarshi</p>
+    <div className="header">
+      <div className="Links  ">
+        <NavLink className="NavLink" to="/get-started">
+          <p className="heading">👨‍⚕️ Arogyadarshi</p>
+        </NavLink>
+        
+        <NavLink className="NavLink" to="/">
+          Home
+        </NavLink>
 
-    <div className="Links  ">
-          <NavLink className="NavLink" to="/">Home</NavLink>
-          
-          <NavLink className="NavLink" to="/dashboard">Dashboard</NavLink>
+        <NavLink className="NavLink" to="/dashboard">
+          Dashboard
+        </NavLink>
 
-          <NavLink className="NavLink" to="/doctor">Doctor's Section</NavLink>
+        <NavLink className="NavLink" to="/doctor">
+          Doctor's Section
+        </NavLink>
+      </div>
+
+      <button className="loginbtn" onClick={btnCall}>
+        Login/Signup
+      </button>
     </div>
-
-    
-    <button className="loginbtn" onClick={btnCall}>Login/Signup</button>
-    </div>
-  )
+  );
 }
