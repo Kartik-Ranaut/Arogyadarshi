@@ -1,14 +1,14 @@
 .header {
   background: rgb(15, 17, 23);
   margin: 0px;
-  padding: 0px;
+  padding: 10px;
   display: flex;
   justify-content: space-between;
 }
 .heading {
   margin: 0px;
-  margin-right: 250px;
-  padding: 10px;
+
+  
 }
 .loginbtn {
   height: 30px;

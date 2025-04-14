@@ -9,10 +9,10 @@ export default function Header() {
     }
   return (
     <div className="header">
-      <div className="Links  ">
         <NavLink className="NavLink" to="/get-started">
           <p className="heading">👨‍⚕️ Arogyadarshi</p>
         </NavLink>
+      <div className="Links  ">
         
         <NavLink className="NavLink" to="/">
           Home
@@ -26,10 +26,10 @@ export default function Header() {
           Doctor's Section
         </NavLink>
       </div>
-
       <button className="loginbtn" onClick={btnCall}>
         Login/Signup
       </button>
+
     </div>
   );
 }
