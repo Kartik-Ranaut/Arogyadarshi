@@ -8,6 +8,8 @@ import Signup from './Components/Signup';
 import Dashboard from './Components/Dashboard';
 import DoctorSection from './Components/DoctorSection';
 import GetStarted from "./Components/GetStarted";
+import HeartLearnMore from './Components/HeartLearnMore';
+import DiabetesLearnMore from './Components/DiabetesLearnMore';
 import { useEffect, useState } from 'react';
 function App() {
   const [islogedin,setlogedin]=useState(false);
@@ -50,7 +52,10 @@ function App() {
   ,[islogedin,refresh])
   return (
     <div className="App">
-      <Header user={user} islogedin={islogedin} setlogedin={setlogedin}></Header>
+      <Header
+        user={user}
+        islogedin={islogedin}
+        setlogedin={setlogedin}></Header>
 
       <Routes>
         <Route path="/" element={<Home />} />
@@ -59,6 +64,8 @@ function App() {
         <Route path="/login" element={<Login setlogedin={setlogedin}/>} />
         <Route path="/doctor" element={<DoctorSection />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/learn-more/heart" element={<HeartLearnMore />} />
+        <Route path="/learn-more/diabetes" element={<DiabetesLearnMore />} />
         <Route path="*" element={<div>page does not exists</div>} />
       </Routes>
     </div>
