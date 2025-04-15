@@ -1,8 +1,13 @@
 import React, { useState } from "react";
 import "./diabetes.css";
-import { hasFormSubmit } from "@testing-library/user-event/dist/utils";
+import Loader from "./Loader";
+import DataFlowTimeline from "./DataFlowTimeline"; // newly added for data flow animation
+
 export default function Diabetes() {
   const [result, setresult] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showTimeline, setShowTimeline] = useState(false);
+
   const labels = [
     { key: "Pregnancies", label: "Number of Pregnancies" },
     { key: "Glucose", label: "Glucose Level" },
@@ -13,44 +18,7 @@ export default function Diabetes() {
     { key: "DiabetesPedigreeFunction", label: "Diabetes Pedigree Function" },
     { key: "Age", label: "Age (years)" },
   ];
-  const submitForm = async (event) => {
-    event.preventDefault();
-    let newErrors = "";
-    Object.keys(data).forEach((key) => {
-      if (data[key] == "") {
-        newErrors += `${key}, `;
-      }
-    });
-    if (Object.keys(newErrors).length > 0) {
-      alert("Please add :" + newErrors + "");
-      return;
-    }
-    console.log("wait..");
-    const formattedData = Object.fromEntries(
-      Object.entries(data).map(([key, value]) => [
-        key,
-        isNaN(value) ? value : Number(value),
-      ])
-    );
-    try {
-      const response = await fetch(
-        "https://disease-prediction-api-2tmy.onrender.com/diabetespredict",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formattedData), // Send converted data
-        }
-      );
-      const data = await response.json();
-      console.log("Prediction Result:", data);
-      setresult(data);
-    } catch (error) {
-      console.error("Error:", error);
-      alert("Error making request. Please try again.");
-    }
-  };
+
   const [data, setdata] = useState({
     Pregnancies: "",
     Glucose: "",
@@ -61,15 +29,66 @@ export default function Diabetes() {
     DiabetesPedigreeFunction: "",
     Age: "",
   });
+
   const handleChange = (e) => {
     setdata({
       ...data,
       [e.target.name]: e.target.value,
     });
   };
+
+  const submitForm = async (event) => {
+    event.preventDefault();
+
+    let newErrors = "";
+    Object.keys(data).forEach((key) => {
+      if (data[key] === "") {
+        newErrors += `${key}, `;
+      }
+    });
+
+    if (newErrors.length > 0) {
+      alert("Please add: " + newErrors);
+      return;
+    }
+
+    const formattedData = Object.fromEntries(
+      Object.entries(data).map(([key, value]) => [
+        key,
+        isNaN(value) ? value : Number(value),
+      ])
+    );
+
+    try {
+      setIsLoading(true);
+      setShowTimeline(true); 
+
+      const response = await fetch(
+        "https://disease-prediction-api-2tmy.onrender.com/diabetespredict",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(formattedData),
+        }
+      );
+
+      const data = await response.json();
+      setresult(data);
+      setShowTimeline(true); 
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Error making request. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   return (
     <form className="datafielddiab" onSubmit={submitForm}>
       <p className="diabhead">Diabetes Prediction User Interface Using ML</p>
+
       <div className="inputfield">
         {Object.keys(data).map((key, index) => (
           <div key={key} className="box">
@@ -84,22 +103,23 @@ export default function Diabetes() {
           </div>
         ))}
       </div>
+
       <input type="submit" className="submitForm" value="Get Result" />
 
-      <div>
-        {result ? (
-          <div>
-            {result.prediction[0] ? (
-              <p>You may have diabetes.</p>
-            ) : (
-              <p>You have a lower chance of having diabetes.</p>
-            )}
-            <p>{`The probability of having diabetes is: ${result.probability}%`}</p>
-          </div>
-        ) : (
-          <div></div>
-        )}
-      </div>
+      {isLoading && <Loader />}
+
+      {!isLoading && result && (
+        <div className="result-display">
+          <p>
+            {result.prediction[0]
+              ? "Your health data suggests a higher chance of diabetes. We recommend consulting a healthcare professional."
+              : "Your results suggest a lower risk of diabetes. Keep maintaining a healthy lifestyle!"}
+          </p>
+          <p>{`The probability of you having diabetes is: ${result.probability}%`}</p>
+        </div>
+      )}
+
+      {showTimeline && <DataFlowTimeline />}
     </form>
   );
 }

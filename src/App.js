@@ -54,7 +54,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/get-started" element={<GetStarted />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard user={user} islogedin={islogedin} />} />
         <Route path="/login" element={<Login setlogedin={setlogedin}/>} />
         <Route path="/doctor" element={<DoctorSection />} />
         <Route path="/signup" element={<Signup />} />

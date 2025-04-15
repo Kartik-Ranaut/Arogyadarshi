@@ -4,7 +4,7 @@ import Heart from './Heart';
 import Diabetes from './Diabetes';
 import "./dashboard.css";
 
-export default function Dashboard() {
+export default function Dashboard(props) {
   const location = useLocation();
   // console.log(location.state)
   const initialSelection = location.state?.selection || "heart";
@@ -40,7 +40,7 @@ export default function Dashboard() {
       </div>
 
       <div className='datafield'>
-        {selection === "heart" ? <Heart /> : <Diabetes />}
+        {selection === "heart" ? <Heart user={props.user} /> : <Diabetes user={props.user}/>}
       </div>
     </div>
   );

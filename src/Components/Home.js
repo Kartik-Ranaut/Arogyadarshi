@@ -3,6 +3,8 @@ import React from "react";
 import "./home.css";
 import HeartImg from "./Heart.jpg";
 import DiabetesImg from "./Diabetes.jpeg"
+import DataFlowTimeline from "./DataFlowTimeline";
+import Loader from "./Loader";
 import { useNavigate } from "react-router-dom";
 
 export default function Home() {
@@ -57,7 +59,7 @@ export default function Home() {
         </div>
 
         <div className="info-box">
-          <img src={DiabetesImg} alt="image aa jayegi bhai" className="info-image" />
+          <img src={DiabetesImg} alt="Diabetes" className="info-image" />
           <h2>Diabetes</h2>
           <p>
             Diabetes is a chronic disease that affects how your body turns food
@@ -163,6 +165,8 @@ export default function Home() {
         onClick={() => navigate("/get-started")}>
         🚀 Get Started
       </button>
+      <DataFlowTimeline/>
+      <Loader></Loader>
     </div>
   );
 }
