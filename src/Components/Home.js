@@ -1,8 +1,8 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from "react";
 import "./home.css";
-import HeartImg from "./Heart.jpg";
-import DiabetesImg from "./Diabetes.jpeg"
+import HeartImg from "./Heart.png";
+import DiabetesImg from "./Diabetes.png";
 import DataFlowTimeline from "./DataFlowTimeline";
 import Loader from "./Loader";
 import { useNavigate } from "react-router-dom";
@@ -20,11 +20,7 @@ export default function Home() {
 
       <div className="info-section">
         <div className="info-box">
-          <img
-            src={HeartImg}
-            alt="Heart disease"
-            className="info-image"
-          />
+          <img src={HeartImg} alt="Heart disease" className="info-image" />
           <h2>Heart Disease</h2>
           <p>
             Heart disease is a term covering a range of conditions affecting
@@ -49,13 +45,20 @@ export default function Home() {
               surgeries (if detected early).
             </li>
           </ul>
-          <button
-            className="predict-btn"
-            onClick={() =>
-              navigate("/dashboard", { state: { selection: "heart" } })
-            }>
-            Predict Heart Disease
-          </button>
+          <div className="button-group">
+            <button
+              className="predict-btn"
+              onClick={() =>
+                navigate("/dashboard", { state: { selection: "heart" } })
+              }>
+              Predict Heart Disease
+            </button>
+            <button
+              className="learn-btn"
+              onClick={() => navigate("/learn-more/heart")}>
+              📖 Learn More
+            </button>
+          </div>
         </div>
 
         <div className="info-box">
@@ -84,13 +87,20 @@ export default function Home() {
               lifestyle modifications.
             </li>
           </ul>
-          <button
-            className="predict-btn"
-            onClick={() =>
-              navigate("/dashboard", { state: { selection: "diabetes" } })
-            }>
-            Predict Diabetes
-          </button>
+          <div className="button-group">
+            <button
+              className="predict-btn"
+              onClick={() =>
+                navigate("/dashboard", { state: { selection: "diabetes" } })
+              }>
+              Predict Diabetes
+            </button>
+            <button
+              className="learn-btn"
+              onClick={() => navigate("/learn-more/diabetes")}>
+              📖 Learn More
+            </button>
+          </div>
         </div>
       </div>
 
@@ -165,7 +175,7 @@ export default function Home() {
         onClick={() => navigate("/get-started")}>
         🚀 Get Started
       </button>
-      <DataFlowTimeline/>
+      <DataFlowTimeline />
       <Loader></Loader>
     </div>
   );

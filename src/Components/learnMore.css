@@ -1,0 +1,53 @@
+.learn-more-container {
+  background-color: #000; /* full black background */
+  color: #fff; /* white text for full contrast */
+  min-height: 100vh; /* ensure full viewport height at minimum */
+  padding: 40px 20px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.learn-more-container h1 {
+  font-size: 2.8rem;
+  color: #f44336; /* highlight red title */
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.learn-more-section {
+  background-color: #1c1c1c; /* darker gray background per section */
+  padding: 25px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+  box-shadow: 0px 4px 10px rgba(255, 255, 255, 0.1);
+}
+
+.learn-more-section h2 {
+  font-size: 1.8rem;
+  color: #ff9800; /* vibrant orange headers */
+  margin-bottom: 15px;
+}
+
+.learn-more-section p,
+.learn-more-section li {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #e0e0e0; /* brighter gray for readability */
+}
+
+.learn-more-section ul {
+  list-style: disc;
+  padding-left: 20px;
+}
+
+.learn-more-footer {
+  text-align: center;
+  margin-top: 40px;
+  color: #aaa;
+  font-size: 0.95rem;
+  border-top: 1px solid #333;
+  padding-top: 20px;
+}
+
+.section h3{
+     color: #f44336;
+}
