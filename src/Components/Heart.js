@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./heart.css";
-export default function Heart() {
+export default function Heart(props) {
   const [formData, setFormData] = useState({
     age: "",
     sex: "",
@@ -64,8 +64,25 @@ export default function Heart() {
       alert("Error making request. Please try again.");
     }
   };
+  const addfamilymember = async (event) => {
+    
+  }
   return (
     <div className="databoxheart">
+     <div className="family">
+
+          <label for="relation">Testing for:</label>
+          <button onClick={addfamilymember}> Add family member </button>
+          </div>
+          <select id="relation" name="relation">
+            {
+              props.user.family.map((relation, index) => (
+                <option key={index} value={relation.id}>
+                  {relation.name}
+                </option>
+              ))
+            }
+          </select>
       <p className="hearthead">
         Heart Disease Prediction User Interface Using ML
       </p>

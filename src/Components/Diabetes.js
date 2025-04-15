@@ -3,7 +3,7 @@ import "./diabetes.css";
 import Loader from "./Loader";
 import DataFlowTimeline from "./DataFlowTimeline"; // newly added for data flow animation
 
-export default function Diabetes() {
+export default function Diabetes(props) {
   const [result, setresult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showTimeline, setShowTimeline] = useState(false);
@@ -84,9 +84,27 @@ export default function Diabetes() {
       setIsLoading(false);
     }
   };
+  const addfamilymember = async (event) => {
+    
+  }
 
   return (
     <form className="datafielddiab" onSubmit={submitForm}>
+
+    <div className="family">
+
+        <label for="relation">Testing for:</label>
+        <button onClick={addfamilymember}> Add family member </button>
+      </div>
+        <select id="relation" name="relation">
+          {
+            props.user.family.map((relation, index) => (
+              <option key={index} value={relation.id}>
+                {relation.name}
+              </option>
+            ))
+          }
+        </select>
       <p className="diabhead">Diabetes Prediction User Interface Using ML</p>
 
       <div className="inputfield">
