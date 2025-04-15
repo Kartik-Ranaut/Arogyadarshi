@@ -36,11 +36,11 @@ export default function Popup(props) {
               if(response.success==true){
                 alert("sucessfully added the family member");
                 props.setShowPopup(false);
+                props.setrefresh((prev)=>!prev)
               }
               else{
                 alert(response.message);
             }
-            props.setrefresh((prev)=>!prev)
         }catch(error){
             alert("error while entring family details");
         }

@@ -20,7 +20,9 @@ function App() {
     phone:"",
     address:"",
     age:"",
-    disease:""
+    disease:"",
+    gender:"",
+    family:[]
   });
   const test=async()=>{
     try{
@@ -47,7 +49,8 @@ function App() {
       }
   }
   useEffect(()=>{
-    test()
+    console.log("testing again");
+    test();
   }
   ,[islogedin,refresh])
   return (
