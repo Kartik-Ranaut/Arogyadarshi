@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-
+import './popup.css'
 export default function Popup(props) {
     const [familyform,setfamilyform]=useState({
         name:"",
@@ -35,6 +35,7 @@ export default function Popup(props) {
               
               if(response.success==true){
                 alert("sucessfully added the family member");
+                props.setShowPopup(false);
               }
               else{
                 alert(response.message);
@@ -45,7 +46,11 @@ export default function Popup(props) {
         }
     }
   return (
-    <div>Enter family Details
+    <div className='popup'>
+    <div className='modal-box'>
+
+    <h2>Enter family Details</h2>
+    
     
     <form onSubmit={handleSubmitfamilyform}>
           <div className="mb-4">
@@ -88,10 +93,13 @@ export default function Popup(props) {
             />
           </div>
 
+        <div className='buttons'>
 
           <button type='submit' className='familyformsubmit'>Submit</button>
+          <button type='button' className='familyformsubmit' onClick={()=>{props.setShowPopup(false)}}> Back</button>
+        </div>
     </form>
-    
+    </div>
     
     </div>
   )

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Popup from "./Popup";
 import "./heart.css";
 export default function Heart(props) {
   const [formData, setFormData] = useState({
@@ -64,9 +65,17 @@ export default function Heart(props) {
       alert("Error making request. Please try again.");
     }
   };
-  const addfamilymember = async (event) => {};
+
+  const [showPopup, setShowPopup] = useState(false);
+
+    const addfamilymember = async (event) => {
+      event.preventDefault();
+      setShowPopup(!showPopup);
+      
+    };
   return (
     <div className="databoxheart">
+    {showPopup && <Popup setrefresh={props.setrefresh} setShowPopup={setShowPopup}></Popup>}
       <div className="family">
         <label for="relation">Testing for:</label>
         <button onClick={addfamilymember}> Add family member </button>

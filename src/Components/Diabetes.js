@@ -86,7 +86,7 @@ export default function Diabetes(props) {
     }
   };
   const [showPopup, setShowPopup] = useState(false);
-  const [familyMember, setFamilyMember] = useState({})
+
   const addfamilymember = async (event) => {
     event.preventDefault();
     setShowPopup(!showPopup);
@@ -96,7 +96,7 @@ export default function Diabetes(props) {
   return (
     <div className="datafielddiab">
 
-    {showPopup && <Popup setrefresh={props.setrefresh}></Popup>}
+    {showPopup && <Popup setrefresh={props.setrefresh} setShowPopup={setShowPopup}></Popup>}
     <div className="family">
       <label for="relation">Testing for:</label>
       <button type="button" onClick={addfamilymember}> Add family member </button>
