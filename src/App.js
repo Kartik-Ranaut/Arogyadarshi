@@ -11,6 +11,7 @@ import GetStarted from "./Components/GetStarted";
 import { useEffect, useState } from 'react';
 function App() {
   const [islogedin,setlogedin]=useState(false);
+  const [refresh,setrefresh]=useState(false);
   const [user,setuserdata]=useState({
     name:"",
     email:"",
@@ -46,7 +47,7 @@ function App() {
   useEffect(()=>{
     test()
   }
-  ,[islogedin])
+  ,[islogedin,refresh])
   return (
     <div className="App">
       <Header user={user} islogedin={islogedin} setlogedin={setlogedin}></Header>
@@ -54,7 +55,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/get-started" element={<GetStarted />} />
-        <Route path="/dashboard" element={<Dashboard user={user} islogedin={islogedin} />} />
+        <Route path="/dashboard" element={<Dashboard user={user} islogedin={islogedin} setrefresh={setrefresh}/>} />
         <Route path="/login" element={<Login setlogedin={setlogedin}/>} />
         <Route path="/doctor" element={<DoctorSection />} />
         <Route path="/signup" element={<Signup />} />

@@ -40,7 +40,7 @@ export default function Dashboard(props) {
       </div>
 
       <div className='datafield'>
-        {selection === "heart" ? <Heart user={props.user} /> : <Diabetes user={props.user}/>}
+        {selection === "heart" ? <Heart user={props.user} islogedin={props.islogedin} setrefresh={props.setrefresh}/> : <Diabetes user={props.user} islogedin={props.islogedin} setrefresh={props.setrefresh}/>}
       </div>
     </div>
   );

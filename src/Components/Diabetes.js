@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import "./diabetes.css";
+import Popup from "./Popup";
 import Loader from "./Loader";
 import DataFlowTimeline from "./DataFlowTimeline"; // newly added for data flow animation
 
@@ -84,25 +85,34 @@ export default function Diabetes(props) {
       setIsLoading(false);
     }
   };
-  const addfamilymember = async (event) => {};
+  const [showPopup, setShowPopup] = useState(false);
+  const [familyMember, setFamilyMember] = useState({})
+  const addfamilymember = async (event) => {
+    event.preventDefault();
+    setShowPopup(!showPopup);
+    
+  };
 
   return (
-    <form className="datafielddiab" onSubmit={submitForm}>
-      <div className="family">
-        <label for="relation">Testing for:</label>
-        <button onClick={addfamilymember}> Add family member </button>
-      </div>
-      {!props.islogedin ? (
-        <div></div>
-      ) : (
-        <select id="relation" name="relation">
-          {props.user.family.map((relation, index) => (
-            <option key={index} value={relation.id}>
-              {relation.name}
-            </option>
-          ))}
-        </select>
-      )}
+    <div className="datafielddiab">
+
+    {showPopup && <Popup setrefresh={props.setrefresh}></Popup>}
+    <div className="family">
+      <label for="relation">Testing for:</label>
+      <button type="button" onClick={addfamilymember}> Add family member </button>
+    </div>
+    {!props.islogedin ? (
+      <div></div>
+    ) : (
+      <select id="relation" name="relation">
+        {props.user.family.map((relation, index) => (
+          <option key={index} value={relation.id}>
+            {relation.name}
+          </option>
+        ))}
+      </select>
+    )}
+    <form onSubmit={submitForm}>
       <p className="diabhead">Diabetes Prediction User Interface Using ML</p>
 
       <div className="inputfield">
@@ -137,5 +147,6 @@ export default function Diabetes(props) {
 
       {showTimeline && <DataFlowTimeline />}
     </form>
+    </div>
   );
 }
