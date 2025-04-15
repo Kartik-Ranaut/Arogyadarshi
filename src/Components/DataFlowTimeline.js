@@ -31,8 +31,9 @@ export default function DataFlowTimeline() {
           <div className="timeline-step" key={index}>
             <div className="timeline-icon">{step.title}</div>
             <p className="timeline-desc">{step.desc}</p>
+
             {index !== steps.length - 1 && (
-              <div className="timeline-arrow">→</div>
+              <div className="timeline-arrow">⬇️</div>
             )}
           </div>
         ))}

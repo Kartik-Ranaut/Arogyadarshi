@@ -61,7 +61,7 @@ export default function Diabetes(props) {
 
     try {
       setIsLoading(true);
-      setShowTimeline(true); 
+      setShowTimeline(true);
 
       const response = await fetch(
         "https://disease-prediction-api-2tmy.onrender.com/diabetespredict",
@@ -76,7 +76,7 @@ export default function Diabetes(props) {
 
       const data = await response.json();
       setresult(data);
-      setShowTimeline(true); 
+      setShowTimeline(true);
     } catch (error) {
       console.error("Error:", error);
       alert("Error making request. Please try again.");
@@ -84,27 +84,25 @@ export default function Diabetes(props) {
       setIsLoading(false);
     }
   };
-  const addfamilymember = async (event) => {
-    
-  }
+  const addfamilymember = async (event) => {};
 
   return (
     <form className="datafielddiab" onSubmit={submitForm}>
-
-    <div className="family">
-
+      <div className="family">
         <label for="relation">Testing for:</label>
         <button onClick={addfamilymember}> Add family member </button>
       </div>
+      {!props.islogedin ? (
+        <div></div>
+      ) : (
         <select id="relation" name="relation">
-          {
-            props.user.family.map((relation, index) => (
-              <option key={index} value={relation.id}>
-                {relation.name}
-              </option>
-            ))
-          }
+          {props.user.family.map((relation, index) => (
+            <option key={index} value={relation.id}>
+              {relation.name}
+            </option>
+          ))}
         </select>
+      )}
       <p className="diabhead">Diabetes Prediction User Interface Using ML</p>
 
       <div className="inputfield">
