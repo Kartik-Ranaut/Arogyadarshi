@@ -64,25 +64,24 @@ export default function Heart(props) {
       alert("Error making request. Please try again.");
     }
   };
-  const addfamilymember = async (event) => {
-    
-  }
+  const addfamilymember = async (event) => {};
   return (
     <div className="databoxheart">
-     <div className="family">
-
-          <label for="relation">Testing for:</label>
-          <button onClick={addfamilymember}> Add family member </button>
-          </div>
-          <select id="relation" name="relation">
-            {
-              props.user.family.map((relation, index) => (
-                <option key={index} value={relation.id}>
-                  {relation.name}
-                </option>
-              ))
-            }
-          </select>
+      <div className="family">
+        <label for="relation">Testing for:</label>
+        <button onClick={addfamilymember}> Add family member </button>
+      </div>
+      {!props.islogedin ? (
+        <div></div>
+      ) : (
+        <select id="relation" name="relation">
+          {props.user.family.map((relation, index) => (
+            <option key={index} value={relation.id}>
+              {relation.name}
+            </option>
+          ))}
+        </select>
+      )}
       <p className="hearthead">
         Heart Disease Prediction User Interface Using ML
       </p>
@@ -109,8 +108,7 @@ export default function Heart(props) {
               name="sex"
               value={formData.sex}
               onChange={handleChange}
-              required
-            >
+              required>
               <option value="">Select</option>
               <option value="1">Male</option>
               <option value="0">Female</option>
@@ -125,8 +123,7 @@ export default function Heart(props) {
               name="cp"
               value={formData.cp}
               onChange={handleChange}
-              required
-            >
+              required>
               <option value="">Select</option>
               <option value="0">Typical Angina</option>
               <option value="1">Atypical Angina</option>
@@ -171,8 +168,7 @@ export default function Heart(props) {
               name="fbs"
               value={formData.fbs}
               onChange={handleChange}
-              required
-            >
+              required>
               <option value="">Select</option>
               <option value="1">Greater than 120 mg/dl</option>
               <option value="0">Less than 120 mg/dl</option>
@@ -187,8 +183,7 @@ export default function Heart(props) {
               name="restecg"
               value={formData.restecg}
               onChange={handleChange}
-              required
-            >
+              required>
               <option value="">Select</option>
               <option value="0">Normal</option>
               <option value="1">ST-T wave abnormality</option>
@@ -219,8 +214,7 @@ export default function Heart(props) {
               name="exang"
               value={formData.exang}
               onChange={handleChange}
-              required
-            >
+              required>
               <option value="">Select</option>
               <option value="1">Yes</option>
               <option value="0">No</option>
@@ -248,8 +242,7 @@ export default function Heart(props) {
               name="slope"
               value={formData.slope}
               onChange={handleChange}
-              required
-            >
+              required>
               <option value="">Select</option>
               <option value="0">Upsloping</option>
               <option value="1">Flat</option>
@@ -278,8 +271,7 @@ export default function Heart(props) {
               name="thal"
               value={formData.thal}
               onChange={handleChange}
-              required
-            >
+              required>
               <option value="">Select</option>
               <option value="1">Normal</option>
               <option value="2">Fixed Defect</option>
