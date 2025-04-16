@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Popup from "./Popup";
 import "./heart.css";
 export default function Heart(props) {
+  const [member,setmember]=useState({});
   const [formData, setFormData] = useState({
     age: "",
     sex: "",
@@ -30,6 +31,10 @@ export default function Heart(props) {
   const handleSubmit = async (event) => {
     console.log("wait..");
     event.preventDefault();
+    if(!member){
+      alert("Please select a family member");
+      return;
+    }
     let newErrors = "";
     Object.keys(formData).forEach((key) => {
       if (formData[key] == "") {
@@ -60,6 +65,36 @@ export default function Heart(props) {
       const data = await response.json();
       console.log("Prediction Result:", data);
       setresult(data);
+      //store data in mongodb
+      try{
+        const response = await fetch(
+          "http://localhost:3000/api/postheartDiseasePrediction",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              ...formattedData,
+              prediction: data.prediction[0],
+              percentage: data.probability,
+              token:document.cookie.substring(6),
+              familyId: member._id
+            }),
+          }
+        );
+        const result = await response.json();
+        console.log(result);
+        if(result.success==true){
+          alert("Data stored successfully");
+        }
+        
+
+      }catch(error){
+        console.log(error);
+        console.log("error in storing data");
+      }
+      
     } catch (error) {
       console.error("Error:", error);
       alert("Error making request. Please try again.");
@@ -83,9 +118,16 @@ export default function Heart(props) {
       {!props.islogedin ? (
         <div>Please login first</div>
       ) : (
-        <select id="relation" name="relation">
+        <select id="relation" name="relation"
+        onChange={(e) => {
+        const selectedMember = props.user.family.find(
+          (relation) => relation._id === e.target.value
+        );
+        setmember(selectedMember);
+        console.log(selectedMember); 
+      }}>
           {props.user.family.map((relation, index) => (
-            <option key={index} value={relation.id}>
+            <option key={index} value={relation._id}>
               {relation.name}
             </option>
           ))}
