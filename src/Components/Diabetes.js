@@ -42,6 +42,7 @@ export default function Diabetes(props) {
 
   const submitForm = async (event) => {
     event.preventDefault();
+
     if(!member){
       alert("Please select a family member");
       return;
@@ -106,9 +107,7 @@ export default function Diabetes(props) {
         console.log(result);
         if(result.success==true){
           alert("Data stored successfully");
-        }
-        else{
-          alert("Error in storing data");
+          props.setrefresh((prev)=>!prev)
         }
 
       }catch(error){

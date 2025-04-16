@@ -87,6 +87,7 @@ export default function Heart(props) {
         console.log(result);
         if(result.success==true){
           alert("Data stored successfully");
+          props.setrefresh((prev)=>!prev)
         }
         
 
