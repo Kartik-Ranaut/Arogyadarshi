@@ -6,9 +6,21 @@ import DiabetesImg from "./Diabetes.png";
 import DataFlowTimeline from "./DataFlowTimeline";
 import Loader from "./Loader";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 export default function Home() {
   const navigate = useNavigate();
+  const [showChat, setShowChat] = useState(false);
+  const [userInput, setUserInput] = useState("");
+  const [chatMessages, setChatMessages] = useState([]);
+
+  const handleSend = () => {
+    if (!userInput.trim()) return;
+
+    const userMessage = { sender: "User", text: userInput };
+    setChatMessages((prev) => [...prev, userMessage]);
+    setUserInput("");
+  };
 
   return (
     <div className="home-container">
@@ -175,8 +187,34 @@ export default function Home() {
         onClick={() => navigate("/get-started")}>
         🚀 Get Started
       </button>
+      <button className="chat-btn" onClick={() => setShowChat(!showChat)}>
+        💬
+      </button>
+
+      <div className={`chat-window-container ${showChat ? "open" : ""}`}>
+        <div className="chat-window">
+          <h3>Chat with Arogyadarshi AI</h3>
+          <div className="chat-messages">
+            {chatMessages.map((msg, idx) => (
+              <p key={idx}>
+                <strong>{msg.sender}:</strong> {msg.text}
+              </p>
+            ))}
+          </div>
+          <input
+            type="text"
+            placeholder="Type your question..."
+            value={userInput}
+            onChange={(e) => setUserInput(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") handleSend();
+            }}
+          />
+        </div>
+      </div>
+
       <DataFlowTimeline />
-      <Loader></Loader>
+      <Loader />
     </div>
   );
 }
