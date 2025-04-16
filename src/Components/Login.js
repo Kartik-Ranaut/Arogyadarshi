@@ -31,7 +31,7 @@ export default function Login(props) {
       body: JSON.stringify(data), // Send converted data
     })
     const resdata = await response.json();
-    alert(`login sucessfull \n name:${resdata.user.name} \n email:${resdata.user.email}`);
+    alert(`login sucessful \n name:${resdata.user.name} \n email:${resdata.user.email}`);
     document.cookie =`token=${resdata.token}; path=/; max-age=3600;`;
     props.setlogedin(true);
     navigate('/');

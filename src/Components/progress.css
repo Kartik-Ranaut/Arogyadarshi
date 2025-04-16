@@ -9,3 +9,77 @@
     justify-content: flex-start;
     gap: 10px;
 }
+.heartData table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    margin-top: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .heartData th,
+  .heartData td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .heartData th {
+    background-color: #f76c6c;
+    color: white;
+    font-weight: 600;
+  }
+  
+  .heartData tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .heartData tr:hover {
+    background-color: #f1f1f1;
+    transition: background-color 0.3s ease;
+  }
+  
+  .heartData p {
+    margin-top: 10px;
+    color: #777;
+    font-style: italic;
+  }
+
+  .diabetesData table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid #ddd;
+    margin-top: 1rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .diabetesData th,
+  .diabetesData td {
+    padding: 12px 15px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .diabetesData th {
+    background-color: #5fbd6b;
+    color: white;
+    font-weight: 600;
+  }
+  
+  .diabetesData tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  .diabetesData tr:hover {
+    background-color: #eef6ee;
+    transition: background-color 0.3s ease;
+  }
+  
+  .diabetesData p {
+    margin-top: 10px;
+    color: #777;
+    font-style: italic;
+  }
+  
