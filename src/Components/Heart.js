@@ -126,6 +126,7 @@ export default function Heart(props) {
         setmember(selectedMember);
         console.log(selectedMember); 
       }}>
+      <option value="">-- Select Member --</option>
           {props.user.family.map((relation, index) => (
             <option key={index} value={relation._id}>
               {relation.name}

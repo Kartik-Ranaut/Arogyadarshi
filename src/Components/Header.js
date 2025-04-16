@@ -22,8 +22,11 @@ export default function Header(props) {
           Dashboard
         </NavLink>
 
-        <NavLink className="NavLink" to="/doctor">
+        {/* <NavLink className="NavLink" to="/doctor">
           Doctor's Section
+        </NavLink> */}
+        <NavLink className="NavLink" to="/progress">
+        My Reports
         </NavLink>
       </div>
       <div className='userbtn'>

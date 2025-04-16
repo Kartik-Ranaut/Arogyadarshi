@@ -1,0 +1,11 @@
+.progress{
+    padding: 30px;
+    padding-top: 70px;
+}
+.select{
+    width:fit-content;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}

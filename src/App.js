@@ -5,6 +5,7 @@ import Home from './Components/Home';
 import Header from './Components/Header';
 import Login from './Components/Login';
 import Signup from './Components/Signup';
+import Progress from './Components/Progress';
 import Dashboard from './Components/Dashboard';
 import DoctorSection from './Components/DoctorSection';
 import GetStarted from "./Components/GetStarted";
@@ -63,6 +64,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/get-started" element={<GetStarted />} />
+        <Route path="/progress" element={<Progress user={user} islogedin={islogedin} setrefresh={setrefresh}/>} />
         <Route path="/dashboard" element={<Dashboard user={user} islogedin={islogedin} setrefresh={setrefresh}/>} />
         <Route path="/login" element={<Login setlogedin={setlogedin}/>} />
         <Route path="/doctor" element={<DoctorSection />} />
