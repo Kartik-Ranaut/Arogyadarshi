@@ -81,7 +81,7 @@ export default function Heart(props) {
         <button onClick={addfamilymember}> Add family member </button>
       </div>
       {!props.islogedin ? (
-        <div></div>
+        <div>Please login first</div>
       ) : (
         <select id="relation" name="relation">
           {props.user.family.map((relation, index) => (

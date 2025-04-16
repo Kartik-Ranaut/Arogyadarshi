@@ -69,7 +69,7 @@ export default function Popup(props) {
             <input type="number" className="form-control" name="age" value={familyform.age} onChange={handleChange} required/>
         </div>
           <div className="mb-4">
-            <label className="form-label">gemder :</label>
+            <label className="form-label">gender :</label>
             <select className="form-control"
               name="gender"
               value={familyform.gender}

@@ -5,6 +5,8 @@ import Loader from "./Loader";
 import DataFlowTimeline from "./DataFlowTimeline"; // newly added for data flow animation
 
 export default function Diabetes(props) {
+
+  const [member,setmember]=useState({});
   const [result, setresult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showTimeline, setShowTimeline] = useState(false);
@@ -40,6 +42,10 @@ export default function Diabetes(props) {
 
   const submitForm = async (event) => {
     event.preventDefault();
+    if(!member){
+      alert("Please select a family member");
+      return;
+    }
 
     let newErrors = "";
     Object.keys(data).forEach((key) => {
@@ -77,6 +83,38 @@ export default function Diabetes(props) {
 
       const data = await response.json();
       setresult(data);
+
+      //store data in mongodb
+      try{
+        const response = await fetch(
+          "http://localhost:3000/api/postdiabetesPrediction",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              ...formattedData,
+              prediction: data.prediction[0],
+              percentage: data.probability,
+              token:document.cookie.substring(6),
+              familyId: member._id
+            }),
+          }
+        );
+        const result = await response.json();
+        console.log(result);
+        if(result.success==true){
+          alert("Data stored successfully");
+        }
+        else{
+          alert("Error in storing data");
+        }
+
+      }catch(error){
+        console.log("error in storing data");
+      }
+      
       setShowTimeline(true);
     } catch (error) {
       console.error("Error:", error);
@@ -102,11 +140,20 @@ export default function Diabetes(props) {
       <button type="button" onClick={addfamilymember}> Add family member </button>
     </div>
     {!props.islogedin ? (
-      <div></div>
+      <div>Please login first</div>
     ) : (
-      <select id="relation" name="relation">
+      <select id="relation" name="relation"
+          onChange={(e) => {
+        const selectedMember = props.user.family.find(
+          (relation) => relation._id === e.target.value
+        );
+        setmember(selectedMember);
+        console.log(selectedMember); 
+      }}
+      >
+      <option value="">-- Select Member --</option>
         {props.user.family.map((relation, index) => (
-          <option key={index} value={relation.id}>
+          <option key={index} value={relation._id} >
             {relation.name}
           </option>
         ))}
