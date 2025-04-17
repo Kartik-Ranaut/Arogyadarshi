@@ -6,7 +6,7 @@ import DataFlowTimeline from "./DataFlowTimeline"; // newly added for data flow 
 
 export default function Diabetes(props) {
 
-  const [member,setmember]=useState({});
+  const [member,setmember]=useState();
   const [result, setresult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showTimeline, setShowTimeline] = useState(false);
@@ -19,7 +19,7 @@ export default function Diabetes(props) {
     { key: "Insulin", label: "Insulin Level" },
     { key: "BMI", label: "Body Mass Index (BMI)" },
     { key: "DiabetesPedigreeFunction", label: "Diabetes Pedigree Function" },
-    { key: "Age", label: "Age (years)" },
+    { key: "Age", label: "Age" },
   ];
 
   const [data, setdata] = useState({
@@ -30,7 +30,7 @@ export default function Diabetes(props) {
     Insulin: "",
     BMI: "",
     DiabetesPedigreeFunction: "",
-    Age: "",
+    Age: member ? member.age: 0,
   });
 
   const handleChange = (e) => {
@@ -47,6 +47,7 @@ export default function Diabetes(props) {
       alert("Please select a family member");
       return;
     }
+    data.Age=member ? member.age: 0;
 
     let newErrors = "";
     Object.keys(data).forEach((key) => {
@@ -136,7 +137,7 @@ export default function Diabetes(props) {
     {showPopup && <Popup setrefresh={props.setrefresh} setShowPopup={setShowPopup}></Popup>}
     <div className="family">
       <label for="relation">Testing for:</label>
-      <button type="button" onClick={addfamilymember}> Add family member </button>
+      <button type="button" onClick={addfamilymember}>Add family member</button>
     </div>
     {!props.islogedin ? (
       <div>Please login first</div>
@@ -169,7 +170,7 @@ export default function Diabetes(props) {
               className="input"
               type="text"
               name={key}
-              value={data[key]}
+              value={labels[index].label == "Age" ?  member ? member.age: 0 :data[key]}
               onChange={handleChange}
             />
           </div>

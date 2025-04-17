@@ -64,7 +64,7 @@ export default function Progress(props) {
                   <td>{data.oldpeak}</td>
                   <td>{data.slope}</td>
                   <td>{data.percentage}</td>
-                  <td>{data.prediction ? "At Risk" : "Healthy"}</td>
+                  <td>{data.percentage>50 ? "At Risk" : "Healthy"}</td>
                 </tr>
               ))}
             </tbody>
@@ -104,7 +104,7 @@ export default function Progress(props) {
             <td>{data.DiabetesPedigreeFunction}</td>
             <td>{member.age}</td>
             <td>{data.percentage}</td>
-            <td>{data.prediction ? "At Risk" : "Healthy"}</td>
+            <td>{data.percentage>50 ? "At Risk" : "Healthy"}</td>
           </tr>
         ))}
       </tbody>

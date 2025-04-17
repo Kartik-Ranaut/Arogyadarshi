@@ -2,10 +2,8 @@ import React, { useState } from "react";
 import Popup from "./Popup";
 import "./heart.css";
 export default function Heart(props) {
-  const [member,setmember]=useState({});
+  const [member,setmember]=useState();
   const [formData, setFormData] = useState({
-    age: "",
-    sex: "",
     cp: "",
     trestbps: "",
     chol: "",
@@ -29,12 +27,18 @@ export default function Heart(props) {
   };
 
   const handleSubmit = async (event) => {
+    
     console.log("wait..");
     event.preventDefault();
+    
+    
     if(!member){
       alert("Please select a family member");
       return;
     }
+    formData.age=member.age;
+    formData.sex=member.gender=="Male" ? 1:0;
+    
     let newErrors = "";
     Object.keys(formData).forEach((key) => {
       if (formData[key] == "") {
@@ -147,8 +151,8 @@ export default function Heart(props) {
               type="number"
               className="form-control"
               name="age"
-              value={formData.age}
-              onChange={handleChange}
+              value={member ? member.age: 0}
+            
               required
             />
           </div>
@@ -159,10 +163,10 @@ export default function Heart(props) {
             <select
               className="form-control"
               name="sex"
-              value={formData.sex}
-              onChange={handleChange}
+              value={member ? member.gender=="Male" ? 1:0 : ""}
+             
               required>
-              <option value="">Select</option>
+              <option value="">Select Member</option>
               <option value="1">Male</option>
               <option value="0">Female</option>
             </select>

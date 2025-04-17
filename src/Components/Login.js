@@ -36,7 +36,7 @@ export default function Login(props) {
     props.setlogedin(true);
     navigate('/');
   } catch(error){
-        console.error("Error:", error);
+        console.log("Error:", error);
         alert("Error making request. Please try again.");
       };
   }
