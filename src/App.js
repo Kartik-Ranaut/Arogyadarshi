@@ -28,7 +28,7 @@ function App() {
   const test=async()=>{
     try{
 
-      const responsee=await fetch("http://localhost:3000/api/test",{
+      const responsee=await fetch("https://arogyadarshi-backend.onrender.com/api/test",{
         method: "POST",
         headers: {
           "Content-Type": "application/json",

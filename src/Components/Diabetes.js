@@ -88,7 +88,7 @@ export default function Diabetes(props) {
       //store data in mongodb
       try{
         const response = await fetch(
-          "http://localhost:3000/api/postdiabetesPrediction",
+          "https://arogyadarshi-backend.onrender.com/api/postdiabetesPrediction",
           {
             method: "POST",
             headers: {

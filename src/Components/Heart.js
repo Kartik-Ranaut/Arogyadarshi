@@ -68,7 +68,7 @@ export default function Heart(props) {
       //store data in mongodb
       try{
         const response = await fetch(
-          "http://localhost:3000/api/postheartDiseasePrediction",
+          "https://arogyadarshi-backend.onrender.com/api/postheartDiseasePrediction",
           {
             method: "POST",
             headers: {

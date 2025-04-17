@@ -22,7 +22,7 @@ export default function Signup() {
       try{
   
       
-      const response= await fetch("http://localhost:3000/api/signup", {
+      const response= await fetch("https://arogyadarshi-backend.onrender.com/api/signup", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
