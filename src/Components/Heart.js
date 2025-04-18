@@ -1,8 +1,15 @@
 import React, { useState } from "react";
 import Popup from "./Popup";
 import "./heart.css";
+import Loader from "./Loader";
+import DataFlowTimeline from "./DataFlowTimeline";
+import RiskMeter from "./RiskMeter";
+
 export default function Heart(props) {
-  const [member,setmember]=useState();
+  const [member,setmember]=useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [showTimeline, setShowTimeline] = useState(false);
+
   const [formData, setFormData] = useState({
     cp: "",
     trestbps: "",
@@ -56,6 +63,9 @@ export default function Heart(props) {
       ])
     );
     try {
+      setIsLoading(true);
+      setShowTimeline(true);
+
       const response = await fetch(
         "https://disease-prediction-api-2tmy.onrender.com/heartdiseasepredict",
         {
@@ -70,7 +80,7 @@ export default function Heart(props) {
       console.log("Prediction Result:", data);
       setresult(data);
       //store data in mongodb
-      try{
+      try {
         const response = await fetch(
           "https://arogyadarshi-backend.onrender.com/api/postheartDiseasePrediction",
           {
@@ -82,27 +92,26 @@ export default function Heart(props) {
               ...formattedData,
               prediction: data.prediction[0],
               percentage: data.probability,
-              token:document.cookie.substring(6),
-              familyId: member._id
+              token: document.cookie.substring(6),
+              familyId: member._id,
             }),
           }
         );
         const result = await response.json();
         console.log(result);
-        if(result.success==true){
+        if (result.success == true) {
           alert("Data stored successfully");
-          props.setrefresh((prev)=>!prev)
+          props.setrefresh((prev) => !prev);
         }
-        
-
-      }catch(error){
+      } catch (error) {
         console.log(error);
         console.log("error in storing data");
       }
-      
     } catch (error) {
       console.error("Error:", error);
       alert("Error making request. Please try again.");
+    } finally {
+      setIsLoading(false);
     }
   };
 
@@ -115,7 +124,11 @@ export default function Heart(props) {
     };
   return (
     <div className="databoxheart">
-    {showPopup && <Popup setrefresh={props.setrefresh} setShowPopup={setShowPopup}></Popup>}
+      {showPopup && (
+        <Popup
+          setrefresh={props.setrefresh}
+          setShowPopup={setShowPopup}></Popup>
+      )}
       <div className="family">
         <label for="relation">Testing for:</label>
         <button onClick={addfamilymember}> Add family member </button>
@@ -123,15 +136,17 @@ export default function Heart(props) {
       {!props.islogedin ? (
         <div>Please login first</div>
       ) : (
-        <select id="relation" name="relation"
-        onChange={(e) => {
-        const selectedMember = props.user.family.find(
-          (relation) => relation._id === e.target.value
-        );
-        setmember(selectedMember);
-        console.log(selectedMember); 
-      }}>
-      <option value="">-- Select Member --</option>
+        <select
+          id="relation"
+          name="relation"
+          onChange={(e) => {
+            const selectedMember = props.user.family.find(
+              (relation) => relation._id === e.target.value
+            );
+            setmember(selectedMember);
+            console.log(selectedMember);
+          }}>
+          <option value="">-- Select Member --</option>
           {props.user.family.map((relation, index) => (
             <option key={index} value={relation._id}>
               {relation.name}
@@ -338,22 +353,25 @@ export default function Heart(props) {
         </div>
 
         <input type="submit" className="submitForm" value="Get Result" />
-      </form>
 
-      <div>
-        {result ? (
-          <div>
-            {result.prediction[0] ? (
-              <p>You may have Heart Disease.</p>
-            ) : (
-              <p>You have a lower chance of having diabetes.</p>
-            )}
-            <p>{`The probability of having Heart Disease is: ${result.probability}%`}</p>
-          </div>
-        ) : (
-          <div></div>
-        )}
-      </div>
+        <div>
+          {isLoading && <Loader />}
+
+          {!isLoading && result && (
+            <>
+              <p>
+                {result.prediction[0]
+                  ? "Your health data suggests a higher chance of heart disease. We recommend consulting a doctor."
+                  : "Lower risk detected. Stay healthy!"}
+              </p>
+              <p>{`The probability of heart disease is: ${result.probability}%`}</p>
+              <RiskMeter riskLevel={result.probability} />
+            </>
+          )}
+
+          {showTimeline && <DataFlowTimeline />}
+        </div>
+      </form>
     </div>
   );
 }
