@@ -11,6 +11,8 @@ import DoctorSection from './Components/DoctorSection';
 import GetStarted from "./Components/GetStarted";
 import HeartLearnMore from './Components/HeartLearnMore';
 import DiabetesLearnMore from './Components/DiabetesLearnMore';
+import ParameterInfo from './Components/ParameterInfo';
+
 import { useEffect, useState } from 'react';
 function App() {
   const [islogedin,setlogedin]=useState(false);
@@ -64,13 +66,33 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/get-started" element={<GetStarted />} />
-        <Route path="/progress" element={<Progress user={user} islogedin={islogedin} setrefresh={setrefresh}/>} />
-        <Route path="/dashboard" element={<Dashboard user={user} islogedin={islogedin} setrefresh={setrefresh}/>} />
-        <Route path="/login" element={<Login setlogedin={setlogedin}/>} />
+        <Route
+          path="/progress"
+          element={
+            <Progress
+              user={user}
+              islogedin={islogedin}
+              setrefresh={setrefresh}
+            />
+          }
+        />
+        <Route
+          path="/dashboard"
+          element={
+            <Dashboard
+              user={user}
+              islogedin={islogedin}
+              setrefresh={setrefresh}
+            />
+          }
+        />
+        <Route path="/login" element={<Login setlogedin={setlogedin} />} />
         <Route path="/doctor" element={<DoctorSection />} />
         <Route path="/signup" element={<Signup />} />
         <Route path="/learn-more/heart" element={<HeartLearnMore />} />
         <Route path="/learn-more/diabetes" element={<DiabetesLearnMore />} />
+        <Route path="/heart-parameters" element={<ParameterInfo />} />
+        <Route path="/diabetes-parameters" element={<ParameterInfo />} />
         <Route path="*" element={<div>page does not exists</div>} />
       </Routes>
     </div>

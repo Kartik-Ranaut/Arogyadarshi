@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./diabetes.css";
 import Popup from "./Popup";
 import Loader from "./Loader";
@@ -6,7 +7,7 @@ import DataFlowTimeline from "./DataFlowTimeline";
 import RiskMeter from "./RiskMeter";
 
 export default function Diabetes(props) {
-
+  const navigate=useNavigate();
   const [member,setmember]=useState();
   const [result, setresult] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -134,68 +135,93 @@ export default function Diabetes(props) {
 
   return (
     <div className="datafielddiab">
-
-    {showPopup && <Popup setrefresh={props.setrefresh} setShowPopup={setShowPopup}></Popup>}
-    <div className="family">
-      <label for="relation">Testing for:</label>
-      <button type="button" onClick={addfamilymember}>Add family member</button>
-    </div>
-    {!props.islogedin ? (
-      <div>Please login first</div>
-    ) : (
-      <select id="relation" name="relation"
-          onChange={(e) => {
-        const selectedMember = props.user.family.find(
-          (relation) => relation._id === e.target.value
-        );
-        setmember(selectedMember);
-        console.log(selectedMember); 
-      }}
-      >
-      <option value="">-- Select Member --</option>
-        {props.user.family.map((relation, index) => (
-          <option key={index} value={relation._id} >
-            {relation.name}
-          </option>
-        ))}
-      </select>
-    )}
-    <form onSubmit={submitForm}>
-      <p className="diabhead">Diabetes Prediction User Interface Using ML</p>
-
-      <div className="inputfield">
-        {Object.keys(data).map((key, index) => (
-          <div key={key} className="box">
-            <label className="label">{labels[index].label}:</label>
-            <input
-              className="input"
-              type="text"
-              name={key}
-              value={labels[index].label == "Age" ?  member ? member.age: 0 :data[key]}
-              onChange={handleChange}
-            />
-          </div>
-        ))}
-      </div>
-
-      <input type="submit" className="submitForm" value="Get Result" />
-
-      {isLoading && <Loader />}
-
-      {!isLoading && result && (
-        <div className="result-display">
-          <p>
-            {result.prediction[0]
-              ? "Your health data suggests a higher chance of diabetes. We recommend consulting a healthcare professional."
-              : "Your results suggest a lower risk of diabetes. Keep maintaining a healthy lifestyle!"}
-          </p>
-          <p>{`The probability of you having diabetes is: ${result.probability}%`}</p>
-          <RiskMeter riskLevel={result.probability}/>
-        </div>
+      {showPopup && (
+        <Popup
+          setrefresh={props.setrefresh}
+          setShowPopup={setShowPopup}></Popup>
       )}
+      <div className="family">
+        <label for="relation">Testing for:</label>
+        <button type="button" onClick={addfamilymember}>
+          Add family member
+        </button>
+      </div>
+      {!props.islogedin ? (
+        <div>Please login first</div>
+      ) : (
+        <select
+          id="relation"
+          name="relation"
+          onChange={(e) => {
+            const selectedMember = props.user.family.find(
+              (relation) => relation._id === e.target.value
+            );
+            setmember(selectedMember);
+            console.log(selectedMember);
+          }}>
+          <option value="">-- Select Member --</option>
+          {props.user.family.map((relation, index) => (
+            <option key={index} value={relation._id}>
+              {relation.name}
+            </option>
+          ))}
+        </select>
+      )}
+      <form onSubmit={submitForm}>
+        <div className="info">
+          <p className="diabhead">
+            Diabetes Prediction User Interface Using ML
+          </p>
+          <span
+            onClick={() => navigate("/diabetes-parameters")}
+            className="info-icon">
+            🛈
+          </span>
+        </div>
+        <div className="inputfield">
+          {Object.keys(data).map((key, index) => (
+            <div key={key} className="box">
+              <label className="label">{labels[index].label}:</label>
+              <input
+                className="input"
+                type="text"
+                name={key}
+                value={
+                  labels[index].label == "Age"
+                    ? member
+                      ? member.age
+                      : 0
+                    : data[key]
+                }
+                onChange={handleChange}
+              />
+            </div>
+          ))}
+        </div>
 
-      {showTimeline && <DataFlowTimeline />}
-    </form>
+        <input type="submit" className="submitForm" value="Get Result" />
+        <span
+          onClick={() => navigate("/diabetes-parameters")}
+          className="info-icon">
+          🛈
+        </span>
+
+        {isLoading && <Loader />}
+
+        {!isLoading && result && (
+          <div className="result-display">
+            <p>
+              {result.prediction[0]
+                ? "Your health data suggests a higher chance of diabetes. We recommend consulting a healthcare professional."
+                : "Your results suggest a lower risk of diabetes. Keep maintaining a healthy lifestyle!"}
+            </p>
+            <p>{`The probability of you having diabetes is: ${result.probability}%`}</p>
+            <RiskMeter riskLevel={result.probability} />
+          </div>
+        )}
+
+        {showTimeline && <DataFlowTimeline />}
+      </form>
     </div>
   );
 }

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Popup from "./Popup";
 import "./heart.css";
 import Loader from "./Loader";
@@ -6,6 +7,7 @@ import DataFlowTimeline from "./DataFlowTimeline";
 import RiskMeter from "./RiskMeter";
 
 export default function Heart(props) {
+  const navigate=useNavigate();
   const [member,setmember]=useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [showTimeline, setShowTimeline] = useState(false);
@@ -154,9 +156,16 @@ export default function Heart(props) {
           ))}
         </select>
       )}
-      <p className="hearthead">
-        Heart Disease Prediction User Interface Using ML
-      </p>
+      <div className="info">
+        <p className="hearthead">
+          Heart Disease Prediction User Interface Using ML
+        </p>
+        <span
+          onClick={() => navigate("/heart-parameters")}
+          className="info-icon">
+          🛈
+        </span>
+      </div>
       <form onSubmit={handleSubmit}>
         <div className="inputbox">
           {/* Age */}
@@ -166,8 +175,7 @@ export default function Heart(props) {
               type="number"
               className="form-control"
               name="age"
-              value={member ? member.age: 0}
-            
+              value={member ? member.age : 0}
               required
             />
           </div>
@@ -178,8 +186,7 @@ export default function Heart(props) {
             <select
               className="form-control"
               name="sex"
-              value={member ? member.gender=="Male" ? 1:0 : ""}
-             
+              value={member ? (member.gender == "Male" ? 1 : 0) : ""}
               required>
               <option value="">Select Member</option>
               <option value="1">Male</option>
