@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import "./diabetes.css";
 import Popup from "./Popup";
 import Loader from "./Loader";
-import DataFlowTimeline from "./DataFlowTimeline"; // newly added for data flow animation
+import DataFlowTimeline from "./DataFlowTimeline"; 
+import RiskMeter from "./RiskMeter";
 
 export default function Diabetes(props) {
 
@@ -189,6 +190,7 @@ export default function Diabetes(props) {
               : "Your results suggest a lower risk of diabetes. Keep maintaining a healthy lifestyle!"}
           </p>
           <p>{`The probability of you having diabetes is: ${result.probability}%`}</p>
+          <RiskMeter riskLevel={result.probability}/>
         </div>
       )}
 

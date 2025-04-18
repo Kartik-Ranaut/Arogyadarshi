@@ -3,8 +3,6 @@ import React from "react";
 import "./home.css";
 import HeartImg from "./Heart.png";
 import DiabetesImg from "./Diabetes.png";
-import DataFlowTimeline from "./DataFlowTimeline";
-import Loader from "./Loader";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
@@ -212,9 +210,7 @@ export default function Home() {
           />
         </div>
       </div>
-
-      <DataFlowTimeline />
-      <Loader />
+      
     </div>
   );
 }
