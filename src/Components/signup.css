@@ -27,7 +27,7 @@
     width: fit-content;
     padding: 15px 30px 15px 30px;
     border-radius: 5px;
-    
+    cursor: pointer;
 }
 
 textarea{

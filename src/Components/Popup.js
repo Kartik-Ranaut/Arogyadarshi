@@ -54,7 +54,7 @@ export default function Popup(props) {
     
     <form onSubmit={handleSubmitfamilyform}>
           <div className="mb-4">
-            <label className="form-label">name:</label>
+            <label className="form-label">Name:</label>
             <input
               type="text"
               className="form-control"
@@ -65,11 +65,11 @@ export default function Popup(props) {
             />
           </div>
         <div className="mb-4">
-            <label className="form-label">age:</label>
+            <label className="form-label">Age:</label>
             <input type="number" className="form-control" name="age" value={familyform.age} onChange={handleChange} required/>
         </div>
           <div className="mb-4">
-            <label className="form-label">gender :</label>
+            <label className="form-label">Gender :</label>
             <select className="form-control"
               name="gender"
               value={familyform.gender}

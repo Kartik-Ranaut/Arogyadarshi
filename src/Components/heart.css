@@ -65,3 +65,7 @@ select {
   align-items: center;
   justify-content: space-between;
 }
+
+.info-icon{
+  cursor: pointer;
+}

@@ -59,6 +59,17 @@
 }
 .family button{
   padding: 5px;
+  cursor: pointer;
+  text-decoration: none;
+  background-color: rgb(235, 83, 75);
+  border: 0px;
+  color: white;
+  font-weight: 1000;
+  font-size: 15px;
+  border-radius: 5px;
+  padding: 12px;
+  text-align: center;
+  transition: 0.3s;
 }
 
 .info{
@@ -66,4 +77,8 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+.info-icon{
+  cursor: pointer;
 }
