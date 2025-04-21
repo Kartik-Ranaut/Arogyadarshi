@@ -32,7 +32,7 @@ export default function Diabetes(props) {
     Insulin: "",
     BMI: "",
     DiabetesPedigreeFunction: "",
-    Age: member ? member.age: 0,
+    Age: member ? member.age: "",
   });
 
   const handleChange = (e) => {
@@ -190,10 +190,12 @@ export default function Diabetes(props) {
                   labels[index].label == "Age"
                     ? member
                       ? member.age
-                      : 0
+                      : "Select a family member"
                     : data[key]
                 }
+                
                 onChange={handleChange}
+                required
               />
             </div>
           ))}

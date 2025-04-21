@@ -8,7 +8,7 @@ import RiskMeter from "./RiskMeter";
 
 export default function Heart(props) {
   const navigate=useNavigate();
-  const [member,setmember]=useState({});
+  const [member,setmember]=useState();
   const [isLoading, setIsLoading] = useState(false);
   const [showTimeline, setShowTimeline] = useState(false);
 
@@ -172,10 +172,11 @@ export default function Heart(props) {
           <div className="mb-3">
             <label className="form-label">Age:</label>
             <input
-              type="number"
+              type="text"
               className="form-control"
               name="age"
-              value={member ? member.age : 0}
+              value={member ? member.age : "Select a family member"}
+              // placeholder="select a family member"
               required
             />
           </div>
@@ -186,9 +187,9 @@ export default function Heart(props) {
             <select
               className="form-control"
               name="sex"
-              value={member ? (member.gender == "Male" ? 1 : 0) : ""}
+              value={member ? (member.gender == "Male" ? 1 : 0) : "s"}
               required>
-              <option value="">Select Member</option>
+              <option value="s">Select Member</option>
               <option value="1">Male</option>
               <option value="0">Female</option>
             </select>
