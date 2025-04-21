@@ -200,11 +200,6 @@ export default function Diabetes(props) {
         </div>
 
         <input type="submit" className="submitForm" value="Get Result" />
-        <span
-          onClick={() => navigate("/diabetes-parameters")}
-          className="info-icon">
-          🛈
-        </span>
 
         {isLoading && <Loader />}
 

@@ -54,7 +54,7 @@ export default function Login(props) {
           <input type="password" id="password" name="password" required onChange={handleChange}/>
         </div>
         <button type="submit" className="submitbtn">Login</button>
-        <p>not registered? click to <a href='/signup'>signup </a></p>
+        <p>Not registered? Click to <a href='/signup'>Signup </a></p>
       </form>
     </div>
   )
