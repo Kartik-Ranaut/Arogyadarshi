@@ -4,66 +4,88 @@ export default function ParameterInfo({ disease }) {
   const heartParameters = [
     {
       name: "Age",
-      description: "Age of the patient in years. Ideal: 30-60.",
+      description: "Age of the patient in years. Ideal range: 30–60.",
     },
     {
       name: "Sex",
-      description: "Gender of the patient. 1 = Male, 0 = Female.",
+      description: "Gender of the patient. Options: Male (1), Female (0).",
     },
     {
       name: "Chest Pain Type (cp)",
-      description: `0: Typical angina, 1: Atypical angina, 2: Non-anginal pain, 3: Asymptomatic.`,
+      description: `Type of chest pain experienced:<br />
+        0 - Typical Angina: Predictable chest pain with exertion.<br />
+        1 - Atypical Angina: Chest pain not related to exertion.<br />
+        2 - Non-anginal Pain: Chest pain not related to the heart.<br />
+        3 - Asymptomatic: No chest pain, silent ischemia.`,
     },
+
     {
       name: "Resting Blood Pressure (trestbps)",
-      description: "Measured in mm Hg. Ideal: 90-120.",
+      description:
+        "Blood pressure measured in mm Hg while at rest. Ideal: 90–120.",
     },
     {
       name: "Cholesterol (chol)",
-      description: "Serum cholesterol in mg/dl. Ideal: 125-200.",
+      description: "Serum cholesterol level in mg/dl. Ideal: 125–200.",
     },
     {
-      name: "Fasting Blood Sugar > 120 mg/dl (fbs)",
-      description: "1 = True, 0 = False.",
+      name: "Fasting Blood Sugar (fbs)",
+      description: `Indicates whether fasting blood sugar is > 120 mg/dl.<br />
+    1 - True (Above 120)<br />
+    0 - False (120 or below)`,
     },
     {
       name: "Resting ECG (restecg)",
-      description: `0: Normal, 1: ST-T wave abnormality, 2: Probable or definite left ventricular hypertrophy.`,
+      description: `Results from the resting electrocardiogram:<br />
+     0 - Normal<br />
+     1 - ST-T wave abnormality (possible ischemia)<br />
+     2 - Left ventricular hypertrophy (thickened heart muscle)`,
     },
     {
-      name: "Max Heart Rate (thalach)",
-      description: "Maximum achieved heart rate. Ideal: 100–170 bpm.",
+      name: "Max Heart Rate Achieved (thalach)",
+      description:
+        "Maximum heart rate reached during exercise. Ideal: 100–170 bpm.",
     },
     {
-      name: "Exercise-Induced Angina (exang)",
-      description: "1 = Yes, 0 = No.",
+      name: "Exercise Induced Angina (exang)",
+      description: `Pain during exercise:<br />
+     1 - Yes<br />
+     0 - No`,
     },
     {
       name: "ST Depression (oldpeak)",
       description:
-        "ST depression induced by exercise relative to rest. Ideal: <2.",
+        "Depression of the ST segment compared to rest (in mm). Ideal: Less than 2.",
     },
     {
-      name: "Slope of ST segment (slope)",
-      description: "0: Upsloping, 1: Flat, 2: Downsloping.",
+      name: "Slope of ST Segment (slope)",
+      description: `Slope of the ST segment during peak exercise:<br />
+     0 - Upsloping (better prognosis)<br />
+     1 - Flat (possible heart issues)<br />
+     2 - Downsloping (more serious ischemia)`,
     },
     {
       name: "Number of Major Vessels (ca)",
-      description: "Number of major vessels (0–3) colored by fluoroscopy.",
+      description:
+        "Number of major vessels (0–3) colored during fluoroscopy to check for blockages.",
     },
     {
       name: "Thalassemia (thal)",
-      description: "1: Normal, 2: Fixed defect, 3: Reversible defect.",
+      description: `A blood disorder classification:<br />
+     1 - Normal<br />
+     2 - Fixed defect (past myocardial infarction)<br />
+     3 - Reversible defect (ischemia under stress)`,
     },
   ];
+
   const diabetesParameters = [
     {
-      name: "Pregnancies",
-      description: "Number of times pregnant. Ideal: 0–10.",
+      name: "Number of Pregnancies",
+      description: "How many times the patient has been pregnant. Ideal: 0–10.",
     },
     {
-      name: "Glucose",
-      description: "Plasma glucose concentration. Ideal: 90–130.",
+      name: "Glucose Level",
+      description: "Plasma glucose concentration after fasting. Ideal: 90–130.",
     },
     {
       name: "Blood Pressure",
@@ -74,22 +96,21 @@ export default function ParameterInfo({ disease }) {
       description: "Triceps skin fold thickness (mm). Ideal: 15–30.",
     },
     {
-      name: "Insulin",
-      description: "2-Hour serum insulin (mu U/ml). Ideal: 16–166.",
+      name: "Insulin Level",
+      description: "2-hour serum insulin level (mu U/ml). Ideal: 16–166.",
     },
     {
-      name: "BMI",
-      description:
-        "Body mass index (weight in kg/(height in m)^2). Ideal: 18.5–24.9.",
+      name: "Body Mass Index (BMI)",
+      description: "Weight-to-height ratio (kg/m²). Ideal: 18.5–24.9.",
     },
     {
       name: "Diabetes Pedigree Function",
       description:
-        "Function score for likelihood of diabetes based on family history. Ideal: <0.5.",
+        "Likelihood of diabetes based on family history. Ideal: Less than 0.5.",
     },
     {
       name: "Age",
-      description: "Age in years. Ideal: 21–60.",
+      description: "Age of the patient in years. Ideal: 21–60.",
     },
   ];
 
@@ -105,7 +126,8 @@ export default function ParameterInfo({ disease }) {
       <ul>
         {data.map((param) => (
           <li key={param.name}>
-            <strong>{param.name}:</strong> {param.description}
+            <strong>{param.name}:</strong>{" "}
+            <span dangerouslySetInnerHTML={{ __html: param.description }} />
           </li>
         ))}
       </ul>
