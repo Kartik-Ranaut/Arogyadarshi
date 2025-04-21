@@ -175,7 +175,7 @@ export default function Heart(props) {
               type="text"
               className="form-control"
               name="age"
-              value={member ? member.age : "Select a family member"}
+              value={member ? member.age : "Select Member"}
               // placeholder="select a family member"
               required
             />

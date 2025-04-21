@@ -62,6 +62,7 @@ export default function Signup() {
         <label for="email">Email</label>
         <input type="email" id="email" name='email' required  onChange={handleChange}/>
       </div>
+      
       <div className="input-group">
         <label for="password">Password</label>
         <input type="password" id="password" name='password' required  onChange={handleChange}/>
@@ -75,6 +76,19 @@ export default function Signup() {
         <input type="text" id="disease" name='disease' required onChange={handleChange}/>
       </div>
     </div>
+    <div className="input-group gender">
+            <label for="gender" >Gender :</label>
+            <select
+              id="gender"
+              name="gender"
+              
+              onChange={handleChange}
+              required>
+              <option value="">Select Member</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+      </div>
       
       <div className="input-group">
         <label for="address">Address</label>

@@ -190,7 +190,7 @@ export default function Diabetes(props) {
                   labels[index].label == "Age"
                     ? member
                       ? member.age
-                      : "Select a family member"
+                      : "Select Member"
                     : data[key]
                 }
                 
