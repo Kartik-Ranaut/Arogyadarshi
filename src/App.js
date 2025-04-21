@@ -91,8 +91,14 @@ function App() {
         <Route path="/signup" element={<Signup />} />
         <Route path="/learn-more/heart" element={<HeartLearnMore />} />
         <Route path="/learn-more/diabetes" element={<DiabetesLearnMore />} />
-        <Route path="/heart-parameters" element={<ParameterInfo />} />
-        <Route path="/diabetes-parameters" element={<ParameterInfo />} />
+        <Route
+          path="/heart-parameters"
+          element={<ParameterInfo disease="heart" />}
+        />
+        <Route
+          path="/diabetes-parameters"
+          element={<ParameterInfo disease="diabetes" />}
+        />
         <Route path="*" element={<div>page does not exists</div>} />
       </Routes>
     </div>
