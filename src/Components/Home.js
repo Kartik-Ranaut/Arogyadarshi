@@ -4,20 +4,113 @@ import "./home.css";
 import HeartImg from "./Heart.png";
 import DiabetesImg from "./Diabetes.png";
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
+import Chart from "chart.js/auto";
 
 export default function Home() {
   const navigate = useNavigate();
   const [showChat, setShowChat] = useState(false);
   const [userInput, setUserInput] = useState("");
   const [chatMessages, setChatMessages] = useState([]);
+  const doughnutRef = useRef(null);
+  const barRef = useRef(null);
+  const lineRef = useRef(null);
 
+
+  useEffect(() => {
+    const lineCtx = lineRef.current.getContext("2d");
+new Chart(lineCtx, {
+  type: "line",
+  data: {
+    labels: ["2015", "2016", "2017", "2018", "2019", "2020", "2021"],
+    datasets: [
+      {
+        label: "Heart Disease Cases (in millions)",
+        data: [580, 590, 600, 610, 620, 635, 640],
+        fill: false,
+        borderColor: "#FF6384",
+        tension: 0.3,
+      },
+    ],
+  },
+  options: {
+    responsive: true,
+    plugins: {
+      title: {
+        display: true,
+        text: "Heart Disease Growth Over Years",
+      },
+    },
+  },
+});
+
+    // Global Disease Prevalence Chart (Doughnut)
+    const doughnutCtx = doughnutRef.current.getContext("2d");
+    new Chart(doughnutCtx, {
+      type: "doughnut",
+      data: {
+        labels: ["Heart Disease", "Diabetes"],
+        datasets: [
+          {
+            data: [640, 537],
+            backgroundColor: ["#FF6384", "#36A2EB"],
+            borderWidth: 1,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: "Global Prevalence of Heart Disease vs. Diabetes (in millions)",
+          },
+        },
+      },
+    });
+
+    // Average Risk Factors Chart (Bar)
+    const barCtx = barRef.current.getContext("2d");
+    new Chart(barCtx, {
+      type: "bar",
+      data: {
+        labels: ["Blood Pressure", "Fasting Glucose", "BMI", "Cholesterol"],
+        datasets: [
+          {
+            label: "Ideal",
+            data: [120, 90, 22, 180],
+            backgroundColor: "#4CAF50",
+          },
+          {
+            label: "High Risk",
+            data: [140, 130, 32, 250],
+            backgroundColor: "#F44336",
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          title: {
+            display: true,
+            text: "Average Ideal vs. High-Risk Health Parameters",
+          },
+        },
+        scales: {
+          y: {
+            beginAtZero: true,
+          },
+        },
+      },
+    });
+  }, []);
   const handleSend = () => {
     if (!userInput.trim()) return;
 
     const userMessage = { sender: "User", text: userInput };
     setChatMessages((prev) => [...prev, userMessage]);
     setUserInput("");
+    
   };
 
   return (
@@ -113,6 +206,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <div className="chart-wrapper">
+  <canvas ref={lineRef}></canvas>
+</div>
 
       <div className="section">
         <h2> Models Behind the Magic</h2>
@@ -210,7 +306,16 @@ export default function Home() {
           />
         </div>
       </div>
-      
+          <div className="home-charts-container">
+      <h2>Welcome to Arogyadarshi Health Dashboard</h2>
+      <div className="chart-wrapper">
+        <canvas ref={doughnutRef}></canvas>
+      </div>
+      <div className="chart-wrapper">
+        <canvas ref={barRef}></canvas>
+      </div>
+    </div>
+
     </div>
   );
 }
