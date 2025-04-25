@@ -12,49 +12,23 @@ export default function Home() {
   const [showChat, setShowChat] = useState(false);
   const [userInput, setUserInput] = useState("");
   const [chatMessages, setChatMessages] = useState([]);
-  const doughnutRef = useRef(null);
-  const barRef = useRef(null);
-  const lineRef = useRef(null);
-
+  const HeartLineRef = useRef(null);
+  const diabetesLineRef = useRef(null);
 
   useEffect(() => {
-    const lineCtx = lineRef.current.getContext("2d");
-new Chart(lineCtx, {
-  type: "line",
-  data: {
-    labels: ["2015", "2016", "2017", "2018", "2019", "2020", "2021"],
-    datasets: [
-      {
-        label: "Heart Disease Cases (in millions)",
-        data: [580, 590, 600, 610, 620, 635, 640],
-        fill: false,
-        borderColor: "#FF6384",
-        tension: 0.3,
-      },
-    ],
-  },
-  options: {
-    responsive: true,
-    plugins: {
-      title: {
-        display: true,
-        text: "Heart Disease Growth Over Years",
-      },
-    },
-  },
-});
+    const diabetesLineCtx = diabetesLineRef.current.getContext("2d");
 
-    // Global Disease Prevalence Chart (Doughnut)
-    const doughnutCtx = doughnutRef.current.getContext("2d");
-    new Chart(doughnutCtx, {
-      type: "doughnut",
+    new Chart(diabetesLineCtx, {
+      type: "line",
       data: {
-        labels: ["Heart Disease", "Diabetes"],
+        labels: ["2015", "2017", "2019", "2021", "2023"],
         datasets: [
           {
-            data: [640, 537],
-            backgroundColor: ["#FF6384", "#36A2EB"],
-            borderWidth: 1,
+            label: "Diabetes Cases (in millions)",
+            data: [415, 425, 463, 537, 578], 
+            fill: false,
+            borderColor: "#36A2EB",
+            tension: 0.3,
           },
         ],
       },
@@ -63,28 +37,24 @@ new Chart(lineCtx, {
         plugins: {
           title: {
             display: true,
-            text: "Global Prevalence of Heart Disease vs. Diabetes (in millions)",
+            text: "Global Diabetes Cases Over the Years",
           },
         },
       },
     });
 
-    // Average Risk Factors Chart (Bar)
-    const barCtx = barRef.current.getContext("2d");
-    new Chart(barCtx, {
-      type: "bar",
+    const lineCtx = HeartLineRef.current.getContext("2d");
+    new Chart(lineCtx, {
+      type: "line",
       data: {
-        labels: ["Blood Pressure", "Fasting Glucose", "BMI", "Cholesterol"],
+        labels: ["2015", "2016", "2017", "2018", "2019", "2020", "2021"],
         datasets: [
           {
-            label: "Ideal",
-            data: [120, 90, 22, 180],
-            backgroundColor: "#4CAF50",
-          },
-          {
-            label: "High Risk",
-            data: [140, 130, 32, 250],
-            backgroundColor: "#F44336",
+            label: "Heart Disease Cases (in millions)",
+            data: [580, 590, 600, 610, 620, 635, 640],
+            fill: false,
+            borderColor: "#FF6384",
+            tension: 0.3,
           },
         ],
       },
@@ -93,12 +63,7 @@ new Chart(lineCtx, {
         plugins: {
           title: {
             display: true,
-            text: "Average Ideal vs. High-Risk Health Parameters",
-          },
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
+            text: "Global Heart Disease Cases Over the Years",
           },
         },
       },
@@ -110,7 +75,6 @@ new Chart(lineCtx, {
     const userMessage = { sender: "User", text: userInput };
     setChatMessages((prev) => [...prev, userMessage]);
     setUserInput("");
-    
   };
 
   return (
@@ -148,6 +112,9 @@ new Chart(lineCtx, {
               surgeries (if detected early).
             </li>
           </ul>
+          <div className="chart-wrapper">
+            <canvas ref={HeartLineRef}></canvas>
+          </div>
           <div className="button-group">
             <button
               className="predict-btn"
@@ -190,6 +157,9 @@ new Chart(lineCtx, {
               lifestyle modifications.
             </li>
           </ul>
+          <div className="chart-wrapper">
+            <canvas ref={diabetesLineRef}></canvas>
+          </div>
           <div className="button-group">
             <button
               className="predict-btn"
@@ -206,9 +176,6 @@ new Chart(lineCtx, {
           </div>
         </div>
       </div>
-      <div className="chart-wrapper">
-  <canvas ref={lineRef}></canvas>
-</div>
 
       <div className="section">
         <h2> Models Behind the Magic</h2>
@@ -306,16 +273,6 @@ new Chart(lineCtx, {
           />
         </div>
       </div>
-          <div className="home-charts-container">
-      <h2>Welcome to Arogyadarshi Health Dashboard</h2>
-      <div className="chart-wrapper">
-        <canvas ref={doughnutRef}></canvas>
-      </div>
-      <div className="chart-wrapper">
-        <canvas ref={barRef}></canvas>
-      </div>
-    </div>
-
     </div>
   );
 }
