@@ -7,7 +7,7 @@ export default function ParameterInfo({ disease }) {
       description: "Age of the patient in years. Ideal range: 30–60.",
     },
     {
-      name: "Sex",
+      name: "Gender",
       description: "Gender of the patient. Options: Male (1), Female (0).",
     },
     {
