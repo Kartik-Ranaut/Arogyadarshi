@@ -1,6 +1,99 @@
+import { useEffect, useRef } from "react";
 import "./parameterInfo.css";
+import Chart from "chart.js/auto";
 
 export default function ParameterInfo({ disease }) {
+  const heartBarRef = useRef(null);
+  const diabetesBarRef = useRef(null);
+
+  useEffect(() => {
+    let chartInstance;
+
+    if (disease === "diabetes" && diabetesBarRef.current) {
+      const ctx = diabetesBarRef.current.getContext("2d");
+      chartInstance = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Glucose", "Blood Pressure", "BMI", "Age"],
+          datasets: [
+            {
+              label: "Ideal",
+              data: [100, 80, 23, 35],
+              backgroundColor: "#2196F3",
+            },
+            {
+              label: "High Risk",
+              data: [160, 110, 35, 65],
+              backgroundColor: "#FF9800",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: "Diabetes: Ideal vs High-Risk Parameters",
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    }
+
+    return () => {
+      if (chartInstance) chartInstance.destroy();
+    };
+  }, [disease]);
+
+  useEffect(() => {
+    let chartInstance;
+
+    if (disease === "heart" && heartBarRef.current) {
+      const ctx = heartBarRef.current.getContext("2d");
+      chartInstance = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["Resting BP", "Cholesterol", "Max HR", "Oldpeak"],
+          datasets: [
+            {
+              label: "Ideal",
+              data: [115, 180, 150, 1],
+              backgroundColor: "#4CAF50",
+            },
+            {
+              label: "High Risk",
+              data: [145, 260, 100, 4],
+              backgroundColor: "#F44336",
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          plugins: {
+            title: {
+              display: true,
+              text: "Heart: Ideal vs High-Risk Parameters",
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    }
+
+    return () => {
+      if (chartInstance) chartInstance.destroy();
+    };
+  }, [disease]);
+
   const heartParameters = [
     {
       name: "Age",
@@ -77,7 +170,6 @@ export default function ParameterInfo({ disease }) {
      3 - Reversible defect (ischemia under stress)`,
     },
   ];
-
   const diabetesParameters = [
     {
       name: "Number of Pregnancies",
@@ -113,7 +205,6 @@ export default function ParameterInfo({ disease }) {
       description: "Age of the patient in years. Ideal: 21–60.",
     },
   ];
-
   const data = disease === "heart" ? heartParameters : diabetesParameters;
 
   return (
@@ -131,6 +222,18 @@ export default function ParameterInfo({ disease }) {
           </li>
         ))}
       </ul>
+
+      {disease === "heart" && (
+        <div className="chart-wrapper">
+          <canvas ref={heartBarRef}></canvas>
+        </div>
+      )}
+
+      {disease === "diabetes" && (
+        <div className="chart-wrapper">
+          <canvas ref={diabetesBarRef}></canvas>
+        </div>
+      )}
     </div>
   );
 }
