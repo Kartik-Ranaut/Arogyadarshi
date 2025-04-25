@@ -183,7 +183,7 @@ export default function Heart(props) {
 
           {/* Sex */}
           <div className="mb-3">
-            <label className="form-label">Sex:</label>
+            <label className="form-label">Gender:</label>
             <select
               className="form-control"
               name="sex"
