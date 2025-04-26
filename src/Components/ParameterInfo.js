@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import "./parameterInfo.css";
 import Chart from "chart.js/auto";
+import Quiz from "./Quiz";
 
 export default function ParameterInfo({ disease }) {
   const heartBarRef = useRef(null);
@@ -234,6 +235,9 @@ export default function ParameterInfo({ disease }) {
           <canvas ref={diabetesBarRef}></canvas>
         </div>
       )}
+
+      {disease === "heart" && <Quiz disease={"heart"} />}
+      {disease === "diabetes" && <Quiz disease={"diabetes"} />}
     </div>
   );
 }
