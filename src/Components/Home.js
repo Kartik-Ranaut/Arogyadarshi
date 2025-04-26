@@ -69,11 +69,26 @@ export default function Home() {
       },
     });
   }, []);
-  const handleSend = () => {
+  const handleSend = async() => {
     if (!userInput.trim()) return;
 
     const userMessage = { sender: "User", text: userInput };
     setChatMessages((prev) => [...prev, userMessage]);
+    try{
+      const response = await fetch("https://arogyadarshi-backend.onrender.com/api/geminiRequest", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message: userInput }),
+      });
+      const data = await response.json();
+      const botMessage = { sender: "Arogyadarshi AI", text: data.data.candidates[0].content.parts[0].text };
+      setChatMessages((prev) => [...prev, botMessage]);
+
+    }catch(error){
+      console.log(error);
+    }
     setUserInput("");
   };
 
