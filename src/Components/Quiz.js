@@ -116,7 +116,9 @@ export default function Quiz({ disease }) {
             </p>
           )}
           <p className="explanation">💡 {q.explanation}</p>
-          <button onClick={handleNext}>Next Question</button>
+          <button onClick={handleNext} className="nav-button">
+            Next Question
+          </button>
         </div>
       )}
     </div>
