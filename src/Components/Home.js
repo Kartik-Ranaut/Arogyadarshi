@@ -200,15 +200,15 @@ export default function Home() {
           Automated pattern recognition from patient history.<br></br>
         </p>
       </div>
-
-      <div className="section">
+{/* 
+     <div className="section">
         <h2>✨ What Makes Arogyadarshi Unique?</h2>
         <p>
           Karte hai points add<br></br>
           Karte hai points add<br></br>
           Karte hai points add<br></br>
         </p>
-      </div>
+      </div> */}
 
       <div className="section">
         <h2>Coming Soon: AI-Powered Interpretations</h2>

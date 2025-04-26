@@ -175,7 +175,7 @@ export default function Diabetes(props) {
           <span
             onClick={() => navigate("/diabetes-parameters")}
             className="info-icon">
-            🛈 Know your Parameters
+            Know your Parameters
           </span>
         </div>
         <div className="inputfield">

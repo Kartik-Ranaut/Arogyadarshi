@@ -1,8 +1,36 @@
 import './header.css'
-import React from 'react'
+import React,{useState,useEffect,useRef} from 'react'
 import { Link, Links, useNavigate , NavLink} from 'react-router-dom'
 
 export default function Header(props) {
+
+  const [isOpen, setIsOpen] = useState(false);
+  const dropdownRef = useRef(null);
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
+  };
+
+  // Close dropdown if clicked outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    }
+
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
+  const handleLogout = () => {
+    alert('Logged out!');
+    // Clear token or do logout logic
+    document.cookie="token=;expires=Thu, 01 Jan 1970 00:00:00 UTC;"; props.setlogedin(false)
+    setIsOpen(false);
+  };
     const navigate=useNavigate();
     const btnCall =()=>{
         navigate('/login');
@@ -34,7 +62,35 @@ export default function Header(props) {
      
       {
 
-      props.islogedin ? <div>{props.user.name}</div>:<button className="loginbtn" onClick={btnCall}>
+      props.islogedin ? <div>
+      
+      <button className="user-name-button" onClick={toggleDropdown}>
+        {props.user.name} {isOpen ? '▲' : '▼'}
+      </button>
+
+      {isOpen && (
+        <div className="dropdown-menu">
+          <div className="user-info">
+            <h4>{props.user.name}</h4>
+            <p>{props.user.email}</p>
+            <p>{props.user.phone}</p>
+            <button className="manage-account-btn">Manage Account</button>
+          </div>
+          <hr />
+          <div className="menu-links">
+            <a href="/dashboard">Dashboard</a>
+            <a href="/progress">My Reports</a>
+          </div>
+          <hr />
+          <button className="logout-button" onClick={handleLogout}>
+            Log out
+          </button>
+        </div>
+      )}
+      
+      
+      
+      </div>:<button className="loginbtn" onClick={btnCall}>
         Login/Signup
       </button>
       }
