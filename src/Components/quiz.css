@@ -25,11 +25,12 @@
   color: #fff;
 }
 
-.options {
+.option {
   display: flex;
   flex-direction: column;
   gap: 0.8rem;
   margin-bottom: 1rem;
+  cursor: pointer;
 }
 
 .option-button {
@@ -68,26 +69,22 @@
 }
 
 .nav-button {
-  background-color: transparent;
-  border: 2px solid #e53935;
-  color: #e53935;
-  padding: 0.5rem 1.5rem;
-  border-radius: 6px;
-  font-weight: bold;
+  background: linear-gradient(135deg, #e53935, #b71c1c);
+  color: #fff;
+  border: none;
+  padding: 0.7rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 30px;
   cursor: pointer;
-  transition: background-color 0.3s;
+  box-shadow: 0 4px 12px rgba(229, 57, 53, 0.4);
+  transition: all 0.3s ease;
 }
 
 .nav-button:hover {
-  background-color: #e53935;
-  color: #fff;
-}
-
-.score {
-  text-align: center;
-  font-size: 1.5rem;
-  margin-top: 2rem;
-  color: #4caf50;
+  background: linear-gradient(135deg, #f44336, #c62828);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(229, 57, 53, 0.5);
 }
 
 .quiz-complete {
