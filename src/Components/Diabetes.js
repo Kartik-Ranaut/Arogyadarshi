@@ -173,7 +173,7 @@ export default function Diabetes(props) {
             Diabetes Prediction User Interface Using ML
           </p>
           <span
-            onClick={() => navigate("/heart-parameters")}
+            onClick={() => navigate("/diabetes-parameters")}
             className="info-icon">
             <i className="bi bi-info-circle"></i> Know your Parameters
           </span>
