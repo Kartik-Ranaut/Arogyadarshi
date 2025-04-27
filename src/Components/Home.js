@@ -74,6 +74,11 @@ export default function Home() {
 
     const userMessage = { sender: "User", text: userInput };
     setChatMessages((prev) => [...prev, userMessage]);
+    setChatMessages((prev) => 
+      [...prev, 
+      { sender: "Arogyadarshi AI", text: "Thinking..." },
+    ]);
+    setUserInput("");
     try{
       const response = await fetch("https://arogyadarshi-backend.onrender.com/api/geminiRequest", {
         method: "POST",
@@ -84,12 +89,13 @@ export default function Home() {
       });
       const data = await response.json();
       const botMessage = { sender: "Arogyadarshi AI", text: data.data.candidates[0].content.parts[0].text };
+      setChatMessages((prev) => prev.slice(0, -1));
       setChatMessages((prev) => [...prev, botMessage]);
 
     }catch(error){
       console.log(error);
     }
-    setUserInput("");
+    
   };
 
   return (
