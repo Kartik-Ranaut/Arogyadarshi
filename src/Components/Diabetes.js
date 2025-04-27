@@ -173,9 +173,9 @@ export default function Diabetes(props) {
             Diabetes Prediction User Interface Using ML
           </p>
           <span
-            onClick={() => navigate("/diabetes-parameters")}
+            onClick={() => navigate("/heart-parameters")}
             className="info-icon">
-            Know your Parameters
+            <i className="bi bi-info-circle"></i> Know your Parameters
           </span>
         </div>
         <div className="inputfield">
@@ -193,7 +193,6 @@ export default function Diabetes(props) {
                       : "Select Member"
                     : data[key]
                 }
-                
                 onChange={handleChange}
                 required
               />
