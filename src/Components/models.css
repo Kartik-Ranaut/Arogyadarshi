@@ -1,0 +1,50 @@
+.models-container {
+  background-color: #000; 
+  color: #fff; 
+  min-height: 100vh; 
+  padding: 40px 20px;
+}
+
+.models-container h2 {
+  text-align: center;
+  color: #e53935;
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.model {
+  margin-top: 25px;
+  padding: 20px;
+  background-color: #2c2c2c;
+  border: 1px solid #e53935;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(229, 57, 53, 0.3);
+}
+
+.model h3 {
+  font-size: 22px;
+  color: #ff5e57;
+  margin-bottom: 10px;
+}
+
+.model p {
+  color: #ddd;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.chart-container {
+  margin: 30px auto;
+  padding: 20px;
+  max-width: 400px;
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  border: 1px solid #333;
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.1);
+}
+
+.chart-container canvas {
+  max-width: 100% !important;
+  height: auto !important;
+  display: block;
+}

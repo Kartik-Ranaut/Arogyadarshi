@@ -12,6 +12,7 @@ import GetStarted from "./Components/GetStarted";
 import HeartLearnMore from './Components/HeartLearnMore';
 import DiabetesLearnMore from './Components/DiabetesLearnMore';
 import ParameterInfo from './Components/ParameterInfo';
+import Models from './Components/Models';
 
 import { useEffect, useState } from 'react';
 function App() {
@@ -99,6 +100,7 @@ function App() {
           path="/diabetes-parameters"
           element={<ParameterInfo disease="diabetes" />}
         />
+        <Route path="/learn-more/models" element={<Models/>} />
         <Route path="*" element={<div>page does not exists</div>} />
       </Routes>
     </div>
