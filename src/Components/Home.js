@@ -211,6 +211,11 @@ export default function Home() {
           Each model has been tuned for precision, using cross-validation and
           performance metrics like accuracy, precision, and recall.
         </p>
+        <button
+          className="learn-btn"
+          onClick={() => navigate("/learn-more/models")}>
+          📖 Learn More
+        </button>
       </div>
 
       <div className="section">
@@ -221,7 +226,7 @@ export default function Home() {
           Automated pattern recognition from patient history.<br></br>
         </p>
       </div>
-{/* 
+      {/* 
      <div className="section">
         <h2>✨ What Makes Arogyadarshi Unique?</h2>
         <p>
