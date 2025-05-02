@@ -5,25 +5,13 @@ import { Link, Links, useNavigate , NavLink} from 'react-router-dom'
 export default function Header(props) {
 
   const [isOpen, setIsOpen] = useState(false);
-  const dropdownRef = useRef(null);
-
+  
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
   };
 
-  // Close dropdown if clicked outside
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setIsOpen(false);
-      }
-    }
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
-    };
-  }, []);
+ 
 
   const handleLogout = () => {
     alert('Logged out!');
@@ -78,8 +66,8 @@ export default function Header(props) {
           </div>
           <hr />
           <div className="menu-links">
-            <a href="/dashboard">Dashboard</a>
-            <a href="/progress">My Reports</a>
+            <p onClick={()=>{navigate("/dashboard")}}>Dashboard</p>
+            <p onClick={()=>{navigate("/progress")}}>My Reports</p>
           </div>
           <hr />
           <button className="logout-button" onClick={handleLogout}>
