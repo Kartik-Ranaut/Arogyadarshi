@@ -163,7 +163,7 @@ export default function Heart(props) {
         <span
           onClick={() => navigate("/heart-parameters")}
           className="info-icon">
-          <i className="bi bi-info-circle"></i> Know your Parameters
+          🛈 Know your Parameters
         </span>
       </div>
       <form onSubmit={handleSubmit}>
