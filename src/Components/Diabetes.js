@@ -101,7 +101,7 @@ export default function Diabetes(props) {
               ...formattedData,
               prediction: data.prediction[0],
               percentage: data.probability,
-              token:document.cookie.substring(6),
+              token:localStorage.getItem('token'),
               familyId: member._id
             }),
           }

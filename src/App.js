@@ -36,7 +36,7 @@ function App() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({"token":document.cookie.substring(6) }),
+        body: JSON.stringify({"token":localStorage.getItem('token') }),
       });
       let res=await responsee.json();
    

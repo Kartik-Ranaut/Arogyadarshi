@@ -16,6 +16,8 @@ export default function Header(props) {
   const handleLogout = () => {
     alert('Logged out!');
     // Clear token or do logout logic
+    localStorage.removeItem('token');
+    // Optionally, you can also clear the cookie
     document.cookie="token=;expires=Thu, 01 Jan 1970 00:00:00 UTC;"; props.setlogedin(false)
     setIsOpen(false);
   };

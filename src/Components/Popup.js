@@ -6,7 +6,7 @@ export default function Popup(props) {
         age:"",
         gender:"",
         relation:"",
-        token:document.cookie.substring(6)
+        token:localStorage.getItem('token')
     });
 
     const handleChange=(e)=>{
