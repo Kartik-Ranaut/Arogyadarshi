@@ -230,9 +230,16 @@ export default function Home() {
       <div className="section">
         <h2>✨ What Makes Arogyadarshi Unique?</h2>
         <p>
-          Karte hai points add<br></br>
-          Karte hai points add<br></br>
-          Karte hai points add<br></br>
+          <strong>Multi-Disease Detection:</strong> Supports heart disease and
+          diabetes — all in one platform.<br></br>
+          <strong>Generative AI Insights:</strong> Personalized result
+          interpretations with actionable health guidance.<br></br>
+          <strong>Track Your Progress:</strong> View historical predictions and
+          monitor health improvements over time. <br></br>
+          <strong>Family Member Profiles:</strong> Easily switch and manage
+          predictions for multiple people. <br></br>
+          <strong>Interactive Health Quiz:</strong> Assess your lifestyle habits
+          and get feedback to improve your health.
         </p>
       </div>
 
