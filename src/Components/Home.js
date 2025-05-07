@@ -237,15 +237,16 @@ export default function Home() {
       </div>
 
       <div className="section">
-        <h2>Coming Soon: AI-Powered Interpretations</h2>
+        <h2>New: AI-Powered Health Interpretations</h2>
         <p>
-          We’re integrating a <strong>Generative AI module</strong> that will
-          analyze your input data and provide personalized explanations, health
-          tips, and confidence-level-based interpretations.
+          Our <strong>Generative AI module</strong> is now live! It analyzes
+          your input data and provides personalized explanations, actionable
+          health tips, and confidence-level-based insights.
         </p>
         <p>
-          Think of it as your AI health buddy — telling you <strong>why</strong>{" "}
-          you got that result, and what to do next!
+          It’s like having your own AI health companion — helping you understand{" "}
+          <strong>why</strong> you got that result and guiding you on{" "}
+          <strong>what to do next</strong>.
         </p>
       </div>
 
