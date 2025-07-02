@@ -66,10 +66,10 @@ function App() {
         setlogedin={setlogedin}></Header>
 
       <Routes>
-        <Route path="/Arogradarshi" element={<Home />} />
-        <Route path="/Arogradarshi/get-started" element={<GetStarted />} />
+        <Route path="/Arogyadarshi" element={<Home />} />
+        <Route path="/Arogyadarshi/get-started" element={<GetStarted />} />
         <Route
-          path="/Arogradarshi/progress"
+          path="/Arogyadarshi/progress"
           element={
             <Progress
               user={user}
@@ -79,7 +79,7 @@ function App() {
           }
         />
         <Route
-          path="/Arogradarshi/dashboard"
+          path="/Arogyadarshi/dashboard"
           element={
             <Dashboard
               user={user}
@@ -88,20 +88,20 @@ function App() {
             />
           }
         />
-        <Route path="/Arogradarshi/login" element={<Login setlogedin={setlogedin} />} />
-        <Route path="/Arogradarshi/doctor" element={<DoctorSection />} />
-        <Route path="/Arogradarshi/signup" element={<Signup />} />
-        <Route path="/Arogradarshi/learn-more/heart" element={<HeartLearnMore />} />
-        <Route path="/Arogradarshi/learn-more/diabetes" element={<DiabetesLearnMore />} />
+        <Route path="/Arogyadarshi/login" element={<Login setlogedin={setlogedin} />} />
+        <Route path="/Arogyadarshi/doctor" element={<DoctorSection />} />
+        <Route path="/Arogyadarshi/signup" element={<Signup />} />
+        <Route path="/Arogyadarshi/learn-more/heart" element={<HeartLearnMore />} />
+        <Route path="/Arogyadarshi/learn-more/diabetes" element={<DiabetesLearnMore />} />
         <Route
-          path="/Arogradarshi/heart-parameters"
+          path="/Arogyadarshi/heart-parameters"
           element={<ParameterInfo disease="heart" />}
         />
         <Route
-          path="/Arogradarshi/diabetes-parameters"
+          path="/Arogyadarshi/diabetes-parameters"
           element={<ParameterInfo disease="diabetes" />}
         />
-        <Route path="/Arogradarshi/learn-more/models" element={<Models/>} />
+        <Route path="/Arogyadarshi/learn-more/models" element={<Models/>} />
         <Route path="*" element={<div>page does not exists</div>} />
       </Routes>
     </div>
