@@ -23,27 +23,27 @@ export default function Header(props) {
   };
     const navigate=useNavigate();
     const btnCall =()=>{
-        navigate('/login');
+        navigate('/Arogyadarshi/login');
     }
   return (
     <div className="header">
-        <NavLink className="NavLink" to="/get-started">
+        <NavLink className="NavLink" to="/Arogyadarshi/get-started">
           <p className="heading">👨‍⚕️ Arogyadarshi</p>
         </NavLink>
       <div className="Links  ">
         
-        <NavLink className="NavLink" to="/">
+        <NavLink className="NavLink" to="/Arogyadarshi/">
           Home
         </NavLink>
 
-        <NavLink className="NavLink" to="/dashboard">
+        <NavLink className="NavLink" to="/Arogyadarshi/dashboard">
           Dashboard
         </NavLink>
 
         {/* <NavLink className="NavLink" to="/doctor">
           Doctor's Section
         </NavLink> */}
-        <NavLink className="NavLink" to="/progress">
+        <NavLink className="NavLink" to="/Arogyadarshi/progress">
         My Reports
         </NavLink>
       </div>
@@ -67,8 +67,8 @@ export default function Header(props) {
            </div>
            <hr />
            <div className="menu-links">
-             <p onClick={()=>{navigate("/dashboard")}}>Dashboard</p>
-             <p onClick={()=>{navigate("/progress")}}>My Reports</p>
+             <p onClick={()=>{navigate("/Arogyadarshi/dashboard")}}>Dashboard</p>
+             <p onClick={()=>{navigate("/Arogyadarshi/progress")}}>My Reports</p>
            </div>
            <hr />
            <button className="logout-button" onClick={handleLogout}>

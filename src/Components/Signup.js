@@ -32,7 +32,7 @@ export default function Signup() {
       const resdata = await response.json();
       if(resdata.success==true){
       alert("Please login now.")
-      navigate("/login");
+      navigate("/Arogyadarshi/login");
       }
       else{
         alert(resdata.message)
