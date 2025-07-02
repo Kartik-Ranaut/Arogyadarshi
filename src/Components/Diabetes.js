@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+
+
 import "./diabetes.css";
 import Popup from "./Popup";
 import Loader from "./Loader";

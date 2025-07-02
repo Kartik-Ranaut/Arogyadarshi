@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
+import "react-toastify/dist/ReactToastify.css";
 import Home from './Components/Home';
 import Header from './Components/Header';
 import Login from './Components/Login';
@@ -65,10 +66,10 @@ function App() {
         setlogedin={setlogedin}></Header>
 
       <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/get-started" element={<GetStarted />} />
+        <Route path="/Arogradarshi" element={<Home />} />
+        <Route path="/Arogradarshi/get-started" element={<GetStarted />} />
         <Route
-          path="/progress"
+          path="/Arogradarshi/progress"
           element={
             <Progress
               user={user}
@@ -78,7 +79,7 @@ function App() {
           }
         />
         <Route
-          path="/dashboard"
+          path="/Arogradarshi/dashboard"
           element={
             <Dashboard
               user={user}
@@ -87,20 +88,20 @@ function App() {
             />
           }
         />
-        <Route path="/login" element={<Login setlogedin={setlogedin} />} />
-        <Route path="/doctor" element={<DoctorSection />} />
-        <Route path="/signup" element={<Signup />} />
-        <Route path="/learn-more/heart" element={<HeartLearnMore />} />
-        <Route path="/learn-more/diabetes" element={<DiabetesLearnMore />} />
+        <Route path="/Arogradarshi/login" element={<Login setlogedin={setlogedin} />} />
+        <Route path="/Arogradarshi/doctor" element={<DoctorSection />} />
+        <Route path="/Arogradarshi/signup" element={<Signup />} />
+        <Route path="/Arogradarshi/learn-more/heart" element={<HeartLearnMore />} />
+        <Route path="/Arogradarshi/learn-more/diabetes" element={<DiabetesLearnMore />} />
         <Route
-          path="/heart-parameters"
+          path="/Arogradarshi/heart-parameters"
           element={<ParameterInfo disease="heart" />}
         />
         <Route
-          path="/diabetes-parameters"
+          path="/Arogradarshi/diabetes-parameters"
           element={<ParameterInfo disease="diabetes" />}
         />
-        <Route path="/learn-more/models" element={<Models/>} />
+        <Route path="/Arogradarshi/learn-more/models" element={<Models/>} />
         <Route path="*" element={<div>page does not exists</div>} />
       </Routes>
     </div>

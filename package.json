@@ -1,5 +1,6 @@
 {
-  "name": "disease-prediction",
+  "homepage": "https://kartik-ranaut.github.io/Arogyadarshi",
+  "name": "Arogyadarshi",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,6 +12,7 @@
     "axios": "^1.8.4",
     "chart.js": "^4.4.9",
     "disease-prediction": "file:",
+    "gh-pages": "^6.3.0",
     "html2canvas": "^1.4.1",
     "jspdf": "^3.0.1",
     "react": "^19.0.0",
@@ -22,6 +24,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

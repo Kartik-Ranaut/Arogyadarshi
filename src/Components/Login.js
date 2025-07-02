@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./login.css";
 import { toast, ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+
 import { useNavigate } from "react-router-dom";
 
 export default function Login(props) {
@@ -75,7 +75,7 @@ export default function Login(props) {
   return (
     <div className="signup-container">
       <ToastContainer
-        position="top-center"
+        position="top-right"
         autoClose={3000}
         hideProgressBar={false}
         pauseOnHover

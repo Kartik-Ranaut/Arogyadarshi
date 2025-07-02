@@ -10,6 +10,7 @@
     gap: 10px;
 }
 .heartData table {
+    font-size: 70%;
     width: 100%;
     border-collapse: collapse;
     border: 1px solid #ddd;
@@ -47,6 +48,7 @@
   }
 
   .diabetesData table {
+    font-size: 70%;
     width: 100%;
     border-collapse: collapse;
     border: 1px solid #ddd;

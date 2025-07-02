@@ -81,6 +81,7 @@ const downloadPDF = () => {
                   <th>Oldpeak</th>
                   <th>Slope</th>
                   <th>Percentage</th>
+                  <th>Date</th>
                   <th>Prediction</th>
                 </tr>
               </thead>
@@ -99,6 +100,7 @@ const downloadPDF = () => {
                     <td>{data.oldpeak}</td>
                     <td>{data.slope}</td>
                     <td>{data.percentage}</td>
+                    <td>{data.date.substring(0,10)}</td>
                     <td>{data.percentage > 50 ? "At Risk" : "Healthy"}</td>
                   </tr>
                 ))}
@@ -124,6 +126,7 @@ const downloadPDF = () => {
                   <th>Diabetes Pedigree</th>
                   <th>Age</th>
                   <th>Percentage</th>
+                  <th>Date</th>
                   <th>Prediction</th>
                 </tr>
               </thead>
@@ -139,6 +142,7 @@ const downloadPDF = () => {
                     <td>{data.DiabetesPedigreeFunction}</td>
                     <td>{member.age}</td>
                     <td>{data.percentage}</td>
+                    <td>{data.date.substring(0,10)}</td>
                     <td>{data.percentage > 50 ? "At Risk" : "Healthy"}</td>
                   </tr>
                 ))}
