@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/Arogyadarshi/static/css/main.db75b7c0.css",
+    "main.js": "/Arogyadarshi/static/js/main.b2e5fa56.js",
+    "static/js/977.cd0aeb2f.chunk.js": "/Arogyadarshi/static/js/977.cd0aeb2f.chunk.js",
+    "static/js/732.8484dd14.chunk.js": "/Arogyadarshi/static/js/732.8484dd14.chunk.js",
+    "static/js/453.ea3a95ad.chunk.js": "/Arogyadarshi/static/js/453.ea3a95ad.chunk.js",
+    "static/media/Heart.png": "/Arogyadarshi/static/media/Heart.5af6eb0991ecb87d56fa.png",
+    "static/media/Diabetes.png": "/Arogyadarshi/static/media/Diabetes.9964323db43af5b48c8d.png",
+    "static/media/logo.svg": "/Arogyadarshi/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/Arogyadarshi/index.html",
+    "main.db75b7c0.css.map": "/Arogyadarshi/static/css/main.db75b7c0.css.map",
+    "main.b2e5fa56.js.map": "/Arogyadarshi/static/js/main.b2e5fa56.js.map",
+    "977.cd0aeb2f.chunk.js.map": "/Arogyadarshi/static/js/977.cd0aeb2f.chunk.js.map",
+    "732.8484dd14.chunk.js.map": "/Arogyadarshi/static/js/732.8484dd14.chunk.js.map",
+    "453.ea3a95ad.chunk.js.map": "/Arogyadarshi/static/js/453.ea3a95ad.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.db75b7c0.css",
+    "static/js/main.b2e5fa56.js"
+  ]
+}
