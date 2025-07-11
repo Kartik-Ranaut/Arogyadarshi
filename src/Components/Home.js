@@ -140,13 +140,13 @@ export default function Home() {
             <button
               className="predict-btn"
               onClick={() =>
-                navigate("/Arogyadarshi/dashboard", { state: { selection: "heart" } })
+                navigate("/dashboard", { state: { selection: "heart" } })
               }>
               Predict Heart Disease
             </button>
             <button
               className="learn-btn"
-              onClick={() => navigate("/Arogyadarshi/learn-more/heart")}>
+              onClick={() => navigate("/learn-more/heart")}>
               📖 Learn More
             </button>
           </div>
@@ -185,13 +185,13 @@ export default function Home() {
             <button
               className="predict-btn"
               onClick={() =>
-                navigate("/Arogyadarshi/dashboard", { state: { selection: "diabetes" } })
+                navigate("/dashboard", { state: { selection: "diabetes" } })
               }>
               Predict Diabetes
             </button>
             <button
               className="learn-btn"
-              onClick={() => navigate("/Arogyadarshi/learn-more/diabetes")}>
+              onClick={() => navigate("/learn-more/diabetes")}>
               📖 Learn More
             </button>
           </div>
@@ -213,7 +213,7 @@ export default function Home() {
         </p>
         <button
           className="learn-btn"
-          onClick={() => navigate("/Arogyadarshi/learn-more/models")}>
+          onClick={() => navigate("/learn-more/models")}>
           📖 Learn More
         </button>
       </div>
@@ -279,7 +279,7 @@ export default function Home() {
       </footer>
       <button
         className="get-started-btn"
-        onClick={() => navigate("/Arogyadarshi/get-started")}>
+        onClick={() => navigate("/get-started")}>
         🚀 Get Started
       </button>
       <button className="chat-btn" onClick={() => setShowChat(!showChat)}>

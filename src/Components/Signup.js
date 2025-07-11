@@ -30,9 +30,9 @@ export default function Signup() {
         body: JSON.stringify(signupdata), // Send converted data
       })
       const resdata = await response.json();
-      if(resdata.success==true){
+      if(resdata.success===true){
       alert("Please login now.")
-      navigate("/Arogyadarshi/login");
+      navigate("/login");
       }
       else{
         alert(resdata.message)

@@ -110,7 +110,7 @@ export default function Diabetes(props) {
         );
         const result = await response.json();
         console.log(result);
-        if(result.success==true){
+        if(result.success===true){
           alert("Data stored successfully");
           props.setrefresh((prev)=>!prev)
         }
@@ -175,7 +175,7 @@ export default function Diabetes(props) {
             Diabetes Prediction User Interface Using ML
           </p>
           <span
-            onClick={() => navigate("/Arogyadarshi/diabetes-parameters")}
+            onClick={() => navigate("/diabetes-parameters")}
             className="info-icon">
             <i className="bi bi-info-circle"></i> Know your Parameters
           </span>
@@ -189,7 +189,7 @@ export default function Diabetes(props) {
                 type="text"
                 name={key}
                 value={
-                  labels[index].label == "Age"
+                  labels[index].label === "Age"
                     ? member
                       ? member.age
                       : "Select Member"

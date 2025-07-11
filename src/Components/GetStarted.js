@@ -17,7 +17,7 @@ export default function GetStarted() {
 
   const handleFinish = () => {
     if (selectedDisease) {
-      navigate("/Arogyadarshi/dashboard", { state: { selection: selectedDisease } });
+      navigate("/dashboard", { state: { selection: selectedDisease } });
     }
   };
 

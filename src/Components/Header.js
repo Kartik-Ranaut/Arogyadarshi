@@ -1,7 +1,6 @@
 import './header.css'
 import React,{useState} from 'react'
-import { Link, Links, useNavigate , NavLink} from 'react-router-dom'
-
+import { useNavigate , NavLink} from 'react-router-dom'
 export default function Header(props) {
 
   const [isOpen, setIsOpen] = useState(false);
@@ -23,27 +22,27 @@ export default function Header(props) {
   };
     const navigate=useNavigate();
     const btnCall =()=>{
-        navigate('/Arogyadarshi/login');
+        navigate('/login');
     }
   return (
     <div className="header">
-        <NavLink className="NavLink" to="/Arogyadarshi/get-started">
+        <NavLink className="NavLink" to="/get-started">
           <p className="heading">👨‍⚕️ Arogyadarshi</p>
         </NavLink>
       <div className="Links  ">
         
-        <NavLink className="NavLink" to="/Arogyadarshi/">
+        <NavLink className="NavLink" to="/">
           Home
         </NavLink>
 
-        <NavLink className="NavLink" to="/Arogyadarshi/dashboard">
+        <NavLink className="NavLink" to="/dashboard">
           Dashboard
         </NavLink>
 
         {/* <NavLink className="NavLink" to="/doctor">
           Doctor's Section
         </NavLink> */}
-        <NavLink className="NavLink" to="/Arogyadarshi/progress">
+        <NavLink className="NavLink" to="/progress">
         My Reports
         </NavLink>
       </div>
@@ -67,8 +66,8 @@ export default function Header(props) {
            </div>
            <hr />
            <div className="menu-links">
-             <p onClick={()=>{navigate("/Arogyadarshi/dashboard")}}>Dashboard</p>
-             <p onClick={()=>{navigate("/Arogyadarshi/progress")}}>My Reports</p>
+             <p onClick={()=>{navigate("/dashboard")}}>Dashboard</p>
+             <p onClick={()=>{navigate("/progress")}}>My Reports</p>
            </div>
            <hr />
            <button className="logout-button" onClick={handleLogout}>
