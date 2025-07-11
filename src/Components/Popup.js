@@ -33,7 +33,7 @@ export default function Popup(props) {
               );
               response=await response.json();
               
-              if(response.success==true){
+              if(response.success===true){
                 alert("sucessfully added the family member");
                 props.setShowPopup(false);
                 props.setrefresh((prev)=>!prev)
