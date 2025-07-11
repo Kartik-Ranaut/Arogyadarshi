@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import "react-toastify/dist/ReactToastify.css";
@@ -40,9 +39,9 @@ function App() {
         body: JSON.stringify({"token":localStorage.getItem('token') }),
       });
       let res=await responsee.json();
-   
-      
-      if(res.success==true){
+
+
+      if(res.success===true){
         setlogedin(true);
         setuserdata(res.data);
         console.log(res.data)
@@ -66,10 +65,10 @@ function App() {
         setlogedin={setlogedin}></Header>
 
       <Routes>
-        <Route path="/Arogyadarshi" element={<Home />} />
-        <Route path="/Arogyadarshi/get-started" element={<GetStarted />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/get-started" element={<GetStarted />} />
         <Route
-          path="/Arogyadarshi/progress"
+          path="/progress"
           element={
             <Progress
               user={user}
@@ -79,7 +78,7 @@ function App() {
           }
         />
         <Route
-          path="/Arogyadarshi/dashboard"
+          path="/dashboard"
           element={
             <Dashboard
               user={user}
@@ -88,20 +87,20 @@ function App() {
             />
           }
         />
-        <Route path="/Arogyadarshi/login" element={<Login setlogedin={setlogedin} />} />
-        <Route path="/Arogyadarshi/doctor" element={<DoctorSection />} />
-        <Route path="/Arogyadarshi/signup" element={<Signup />} />
-        <Route path="/Arogyadarshi/learn-more/heart" element={<HeartLearnMore />} />
-        <Route path="/Arogyadarshi/learn-more/diabetes" element={<DiabetesLearnMore />} />
+        <Route path="/login" element={<Login setlogedin={setlogedin} />} />
+        <Route path="/doctor" element={<DoctorSection />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/learn-more/heart" element={<HeartLearnMore />} />
+        <Route path="/learn-more/diabetes" element={<DiabetesLearnMore />} />
         <Route
-          path="/Arogyadarshi/heart-parameters"
+          path="/heart-parameters"
           element={<ParameterInfo disease="heart" />}
         />
         <Route
-          path="/Arogyadarshi/diabetes-parameters"
+          path="/diabetes-parameters"
           element={<ParameterInfo disease="diabetes" />}
         />
-        <Route path="/Arogyadarshi/learn-more/models" element={<Models/>} />
+        <Route path="/learn-more/models" element={<Models />} />
         <Route path="*" element={<div>page does not exists</div>} />
       </Routes>
     </div>

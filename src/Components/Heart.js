@@ -46,11 +46,11 @@ export default function Heart(props) {
       return;
     }
     formData.age=member.age;
-    formData.sex=member.gender=="Male" ? 1:0;
+    formData.sex=member.gender==="Male" ? 1:0;
     
     let newErrors = "";
     Object.keys(formData).forEach((key) => {
-      if (formData[key] == "") {
+      if (formData[key] === "") {
         newErrors += `${key}, `;
       }
     });
@@ -101,7 +101,7 @@ export default function Heart(props) {
         );
         const result = await response.json();
         console.log(result);
-        if (result.success == true) {
+        if (result.success === true) {
           alert("Data stored successfully");
           props.setrefresh((prev) => !prev);
         }
@@ -187,7 +187,7 @@ export default function Heart(props) {
             <select
               className="form-control"
               name="sex"
-              value={member ? (member.gender == "Male" ? 1 : 0) : "s"}
+              value={member ? (member.gender === "Male" ? 1 : 0) : "s"}
               required>
               <option value="s">Select Member</option>
               <option value="1">Male</option>

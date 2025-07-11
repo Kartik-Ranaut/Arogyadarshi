@@ -60,7 +60,7 @@ export default function Login(props) {
 
         // Delay navigation to let toast show
         setTimeout(() => {
-          navigate("/Arogyadarshi/");
+          navigate("/");
         }, 3000);
       }
     } catch (error) {
