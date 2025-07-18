@@ -95,7 +95,7 @@ export default function Signup() {
         <textarea id="address" rows="2" required name='address' onChange={handleChange}></textarea>
       </div>
       <button type="submit" className="submitbtn">Register</button>
-    <p>Already have an account? <a href='/login'>Login</a></p>
+    <p>Already have an account?<span onClick={() => navigate('/login')} style={{color: 'blue', cursor: 'pointer', textDecoration: 'underline'}}> Login</span></p>
     
     </form>
   </div>

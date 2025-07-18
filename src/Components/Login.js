@@ -109,7 +109,7 @@ export default function Login(props) {
           Login
         </button>
         <p>
-          Not registered? Click to <a href="/signup">Signup </a>
+          Not registered? <span onClick={() => navigate('/signup')} style={{color: 'blue', cursor: 'pointer', textDecoration: 'underline'}}> Signup</span>
         </p>
       </form>
     </div>
